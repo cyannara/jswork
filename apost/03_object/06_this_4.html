@@ -8,18 +8,18 @@
 <body>
     <button type="button" class="basketCmd">선택삭제</button>
     <button type="button" class="basketCmd">장바구니비우기</button>
-    <button type="button" class="basketCmd">행삭제</button>
+    <button type="button" class="basketCmd">단건삭제</button>
     <script>
         let basket = {
             totalCount:10,
             totalPrice :0,
-            delCheckItem : function(){ console.log(this); }
+            delCheckItem : function(){ console.log(event.target.innerText, this); }
         }
 
         const baskCmd = document.querySelectorAll(".basketCmd");
         baskCmd[0].addEventListener("click", function(){ basket.delCheckItem(); })
-        baskCmd[1].addEventListener("click", basket.delCheckItem)
-        baskCmd[2].addEventListener("click", basket.delCheckItem.bind(basket))
+        baskCmd[1].addEventListener("click", basket.delCheckItem.bind(basket))
+        baskCmd[2].addEventListener("click", basket.delCheckItem)
     </script>
 </body>
 </html>

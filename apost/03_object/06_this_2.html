@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this</title>
+</head>
+<body>
+    <h3>this 컨텍스트 범위와 바인딩</h3>
+    <script>
+        let obj = {}
+        obj.act = function(){
+            this.value='default value';
+
+            outerFunc();
+            outerFuncRef(this);
+        } 
+
+        function outerFunc() {
+            this.value = 'outerfunc value';
+            console.log("outFunc this.value : "+this.value);
+            console.log("obj.value : "+obj.value);
+        }
+
+        function outerFuncRef(callRef){
+            callRef.value="outerFuncRef value";
+            console.log("outerFuncRef this.value : "+this.value);
+            console.log("callRef.value : "+callRef.value);
+            console.log("obj.value : "+obj.value);
+        }
+
+        outerFunc();
+        outerFuncRef(this);
+        let oF = outerFunc.bind(this);
+        oF();
+        
+
+        obj.act();
+    </script>
+</body>
+</html>

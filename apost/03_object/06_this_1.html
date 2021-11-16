@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this</title>
+</head>
+<body>
+    <h3>this 컨텍스트 범위와 바인딩</h3>
+    <script>
+        let obj = {}
+        obj.act = function(){
+            this.value='default value';
+
+            function innerAct() {
+                this.value = 'innerAct value';
+                console.log("1 .this.value:"+this.value);
+            }
+
+            function innerReact(caller){
+                caller.value="innerReact value";
+                console.log("2. this.value:"+this.value);
+                console.log("3. caller.value:"+caller.value);
+            }
+
+            innerAct();
+            console.log("4. obj 객체의 this.value:"+this.value);
+
+            innerReact(this);
+            console.log("5. obj 객체의 this.value:"+this.value);
+        }
+
+        obj.act();
+        console.log("6. 전역 객체의 this.value:"+this.value);
+    </script>
+</body>
+</html>

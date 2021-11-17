@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="demo"></div>
+<h2>The XMLHttpRequest Object</h2>
+<button type="button" onclick="loadDoc()">Change Content</button>
+
+
+<script>
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    var obj  = JSON.parse(this.responseText)
+    for(let emp of obj) 
+      document.getElementById("demo").innerHTML += 
+                        `<input type='radio' value='${emp.id}'>${emp.name}` ;
+    for(i=0; i<obj.length; i++) 
+      document.getElementById("demo").innerHTML += 
+                        `<input type='radio' value='${obj[i].id}'>${obj[i].name}`;
+}
+  xhttp.open("GET", "ajax_info.txt");
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>

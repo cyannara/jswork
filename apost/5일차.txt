@@ -1,0 +1,55 @@
+(`[data-id='${}']`)
+https://ko.javascript.info/
+속성
+<input name="username">
+노드찾기
+1. 부모노드의 형노드의 innerText
+   chap[2].parentElement.previousElementSibling.innerText 
+2. .contents div(조상)의 첫번째 자식의 innerText
+   chap[2].closest(".contents").firstElementChild.innerText 
+
+'1001'
+'11'
+
+
+
+
+
+
+  <div class="btn ddd">    </div>
+
+--------------------------------------------------------
+   create table cart (
+     no         number  primary key,
+     product_nm varchar2(50),
+     price      number,
+     qty        number
+   );
+
+insert into cart values ( 1, '찜마마', 20000, 2);
+insert into cart values ( 2, '요거팜', 19000, 1);
+insert into cart values ( 3, '아날도', 15200, 1);
+
+commit;
+
+http://localhost/prj/cartDelete?no=3
+
+fetch("../cartSelectList")   <=상대경로
+fetch("/prj/cartSelectList") <=절대경로 (contextpath부터 지정)
+
+
+http://localhost/prj/cartSelectList
+http://localhost/prj/resources/10-11.html
+
+
+
+
+
+
+
+
+
+
+
+
+

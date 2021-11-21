@@ -1,4 +1,4 @@
-package com.yedam.spring.users;
+package co.micol.prj.users.vo;
 
 public class UserVO {
 	

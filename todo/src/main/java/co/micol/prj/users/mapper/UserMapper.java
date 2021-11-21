@@ -1,12 +1,12 @@
-package co.micol.prj.todo.mapper;
+package co.micol.prj.users.mapper;
 
 import java.util.List;
 
-import co.micol.prj.todo.vo.TodoVO;
+import co.micol.prj.users.vo.UserVO;
 
-public interface TodoMapper {
-	public List<TodoVO> todoSelectList();
-	public void todoInsert(TodoVO vo);
-	public void todoUpdate(TodoVO vo);
-	public void todoDelete(TodoVO vo);
+public interface UserMapper {
+	public List<UserVO> userSelectList();
+	public void userInsert(UserVO vo);
+	public void userUpdate(UserVO vo);
+	public void userDelete(UserVO vo);
 } 

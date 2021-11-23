@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {
   margin: 0;
@@ -124,11 +125,17 @@ input {
   background-color: #bbb;
 }
 </style>
+<<<<<<< HEAD
+=======
+<script src="https://unpkg.com/vue@next"></script>
+<!-- <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script> -->
+>>>>>>> a4615c30885eed229fd43b42e11a7cd13d806f98
 </head>
 <body>
 <div id="app">
     <div id="myDIV" class="header">
     <h2 style="margin:5px">My To Do List</h2>
+<<<<<<< HEAD
     <input type="text" id="myInput" v-model="inputContent" placeholder="Title...">
     <span class="addBtn" @click="todoInsert">Add</span>
     </div>
@@ -211,5 +218,18 @@ input {
     const todoApp = Vue.createApp(todoData).mount("#app");
 </script>
 
+=======
+    <input type="text" id="myInput" placeholder="Title..." v-model="inputTodo">
+    <span class="addBtn" v-on:click="todoInsert">Add</span>
+    </div>
+    <ul id="myUL">
+        <li v-for="(todo, index) in todos" v-bind:class="{checked :todo.todoyn==1? true : false }" @click="todoChange(index)">
+            {{todo.contents}}<span class="close" v-on:click="todoDelete(index)">X</span></li>
+    </ul>
+    {{remaining}} / {{todos.length}} 건 처리
+    <button type="button" @click="todoDoneDelete">처리완료삭제</button>
+</div>
+<script src="todo.js"></script>
+>>>>>>> a4615c30885eed229fd43b42e11a7cd13d806f98
 </body>
 </html>

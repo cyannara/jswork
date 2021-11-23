@@ -130,79 +130,60 @@ input {
 <div id="myDIV" class="header">
   <h2 style="margin:5px">My To Do List</h2>
   <input type="text" id="myInput" placeholder="Title...">
-  <span class="addBtn">Add</span>
+  <span onclick="newElement()" class="addBtn">Add</span>
 </div>
 
 <ul id="myUL">
+  <li>Hit the gym</li>
   <li class="checked">Pay bills</li>
+  <li>Meet George</li>
+  <li>Buy eggs</li>
+  <li>Read a book</li>
+  <li>Organize office</li>
 </ul>
 
 <script>
+// Create a "close" button and append it to each list item
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
 
-//fetch
-fetch("../todoSelect")
-.then(response => response.json())
-.then(result => {
-	//li태그 만들어서 ul태그에 추가
-	for (todo of result) {
-		newElement(todo);
-	}
-})
-
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
 
 // Add a "checked" symbol when clicking on a list item
 var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
   if (ev.target.tagName === 'LI') {
-	//var no = ____________________________
-    //var todoyn = ________________________//  checked 클래스 있으면 0, 
-    //update fecth
-	/* fetch("../todoUpdate",{
-		method: 'POST',
-		headers: {
-		      'Content-Type': 'application/x-www-form-urlencoded',
-		    },
-	//	body : _________________________   //질의문자열 no=2&todoyn=1
-	})
-	.then(response => response.json())
-	.then(result => {
-	    ev.target.classList.toggle('checked');
-	}) */
-	ev.target.classList.toggle('checked');
+    ev.target.classList.toggle('checked');
   }
 }, false);
 
-document.getElementsByClassName('addBtn')[0].addEventListener('click', function(){
-	//텍스트 필드가 널이면 alert
-	let inputValue = document.getElementById('myInput');
-	if(inputValue.value == ''){
-		alert('입력하세요');
-		return
-	}
-	
-	//등록요청
-	fetch("../todoInsert",{
-		method: 'POST',
-		headers: {
-		      'Content-Type': 'application/x-www-form-urlencoded',
-		    },
-		body : "contents=" + inputValue.value
-	})
-	.then(response => response.json())
-	.then(result => {
-		newElement(result);
-	})
-})
-
-function newElement(todo) {	
+// Create a new list item when clicking on the "Add" button
+function newElement() {
   var li = document.createElement("li");
-  li.innerHTML = todo.contents;
-  li.setAttribute('data-no', todo.no);
-  if(todo.todoyn == 1 ) {
-	  //'checked' 클래스 추가
-	  li.className = 'checked'
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
   }
-  document.getElementById("myUL").appendChild(li);
+  document.getElementById("myInput").value = "";
 
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
@@ -210,13 +191,12 @@ function newElement(todo) {
   span.appendChild(txt);
   li.appendChild(span);
 
-  span.onclick = function() {
-      var li = this.parentElement;
-      var no = li.getAttribute('data-no');  //data-no 속성을 읽기
-      fetch("../todoDelete?no=" + no )  //서버에 삭제 요청
-      .then( response => response.json() )      // json 변환
-      .then( result => { li.remove();  } )  // //li 태그 삭제
-  }  
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
 }
 </script>
 

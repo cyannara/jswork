@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .item {
+            background-color: yellowgreen;
+        }
+        .low {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <table id="table">
+        <thead><tr><td>과목</td><td>성적</td></tr></thead>
+        </br>
+        <tbody>
+            <tr>
+            <td>국어</td><td>100</td>
+            </tr>
+            <tr>
+            <td>영어</td><td>50</td>
+            </tr>
+            <tr>
+            <td>수학</td><td>40</td>
+            </tr>  
+        </tbody>      
+      </table>
+      <script>
+          //성적합계 출력
+        let score = document.querySelectorAll("#table tbody tr td:last-child")
+        // [ td, td, td]
+
+        //점수가 60이하이면 'red' 클래스 추가
+        for(s of score) {     '10' ,'9'
+            if( parseInt(s.innerText) < 60 ) {
+                s.classList.add("low");
+            }
+        }
+
+        let sum = 0;
+        // for(s of score) {
+        //     sum += parseInt(s.innerText);
+        // }
+        let table = document.querySelector("#table")
+        for(i=1; i<table.rows.length; i++ ) {
+            let s = table.rows[i].cells[1].innerText;
+            sum += parseInt(s.innerText);
+        }
+        console.log(sum);
+      </script>
+</body>
+</html>

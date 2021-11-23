@@ -13,13 +13,15 @@
         let basket = {
             totalCount:10,
             totalPrice :0,
-            delCheckItem : function(){ console.log(event.target.innerText, this); }
+            delCheckItem : function(){ console.log(this); }
         }
 
         const baskCmd = document.querySelectorAll(".basketCmd");
         baskCmd[0].addEventListener("click", function(){ basket.delCheckItem(); })
         baskCmd[1].addEventListener("click", basket.delCheckItem.bind(basket))
         baskCmd[2].addEventListener("click", basket.delCheckItem)
+
+        basket.delCheckItem(); 
     </script>
 </body>
 </html>

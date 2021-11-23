@@ -10,13 +10,12 @@ function asyncWork(value){
 		},1000);
 	})
 }
-
 asyncWork(40)
   .then((value)=>{
-	console.log(value);
+	console.log("1.", value);
 	return asyncWork(value);
 }).then((value)=>{
-	console.log(value);
+	console.log("2.",value);
 	return asyncWork(value);
 }).catch((err)=>{
 	console.log('catch:' + err);

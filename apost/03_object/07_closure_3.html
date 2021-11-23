@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>closure.html</title>
+</head>
+<body>
+    <h3>클로저</h3>
+    <script>
+let name="choi";        
+function getScore () {
+  var num1 = 2,
+      num2 = 3;
+
+  function add() {
+    return name + " scored " + (num1 + num2);
+  }
+
+  return add;
+}
+var str = getScore();  //add  function
+console.log(str());    // add 함수 호출 
+str = null;
+    </script>
+
+</body>
+</html>

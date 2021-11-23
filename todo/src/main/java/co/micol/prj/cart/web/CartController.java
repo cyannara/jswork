@@ -1,5 +1,7 @@
 package co.micol.prj.cart.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,4 +33,9 @@ public class CartController {
 		mapper.cartDeleteAll();
 		return true;
 	}
+	
+	@RequestMapping("cartSelectList")
+	public List<CartVO> cartSelectList() {
+		return mapper.cartSelectList();
+	}	
 }

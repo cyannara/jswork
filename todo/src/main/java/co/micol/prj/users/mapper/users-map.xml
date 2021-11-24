@@ -3,7 +3,7 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- users_mapper.xml -->
 <mapper namespace="co.micol.prj.users.mapper.UserMapper">
-	<select id="userSelectList" resultType="user" parameterType="user">
+	<select id="userSelectList" resultType="userVO" parameterType="userVO">
 		select id, password, name, role
 		from users
 		<where>
@@ -15,13 +15,13 @@
 			</if>
 		</where>
 	</select>
-	<select id="getUser" parameterType="user" resultType="user">
+	<select id="getUser" parameterType="userVO" resultType="userVO">
 		select id,
 		password, name, role
 		from users
 		where id=#{id}
 	</select>
-	<select id="getUserListMap" parameterType="user" resultType="map">
+	<select id="getUserListMap" parameterType="userVO" resultType="map">
 		select id        "id", 
 		       password  "password", 
 		       name      "name", 
@@ -30,7 +30,7 @@
 	</select>
 
 	<!-- 등록 -->
-	<insert id="userInsert" parameterType="user">
+	<insert id="userInsert" parameterType="userVO">
 		insert into users (id, password, name, role)
 		values ( #{id},
 		#{password},
@@ -39,7 +39,7 @@
 	</insert>
 
 	<!-- 수정 -->
-	<update id="userUpdate" parameterType="user">
+	<update id="userUpdate" parameterType="userVO">
 		update users set
 		password = #{password},
 		name = #{name},
@@ -48,7 +48,7 @@
 	</update>
 
 	<!-- 삭제 -->
-	<delete id="userDelete" parameterType="user">
+	<delete id="userDelete" parameterType="userVO">
 		delete from users
 		where id = #{id}
 	</delete>

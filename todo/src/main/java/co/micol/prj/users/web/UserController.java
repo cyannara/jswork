@@ -3,6 +3,7 @@ package co.micol.prj.users.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,10 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import co.micol.prj.users.mapper.UserMapper;
 import co.micol.prj.users.vo.UserVO;
 
-
-
-
-
+@CrossOrigin(origins = {"http://127.0.0.1:3000"}, maxAge = 3600)
 @RestController
 public class UserController {
 

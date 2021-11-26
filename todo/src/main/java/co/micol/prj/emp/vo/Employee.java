@@ -1,4 +1,4 @@
-package com.company.employee;
+package co.micol.prj.emp.vo;
 
 import java.util.Date;
 
@@ -15,6 +15,7 @@ public class Employee {
 	private String last_name;
 	private String first_name;
 	private Integer employee_id;
+	private String department_name;
 	
 	public Integer getDepartment_id() {
 		return department_id;
@@ -81,6 +82,12 @@ public class Employee {
 	}
 	public void setEmployee_id(Integer employee_id) {
 		this.employee_id = employee_id;
+	}
+	public String getDepartment_name() {
+		return department_name;
+	}
+	public void setDepartment_name(String department_name) {
+		this.department_name = department_name;
 	}
 	
 	

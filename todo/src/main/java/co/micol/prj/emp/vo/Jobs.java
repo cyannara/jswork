@@ -1,4 +1,4 @@
-package com.company.employee;
+package co.micol.prj.emp.vo;
 
 public class Jobs {
 	private Integer max_salary;

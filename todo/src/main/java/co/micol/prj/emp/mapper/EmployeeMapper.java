@@ -1,26 +1,18 @@
-package com.company.employee;
+package co.micol.prj.emp.mapper;
 
 import java.util.List;
-import java.util.Map;
 
-import org.springframework.stereotype.Repository;
+import co.micol.prj.emp.vo.Departments;
+import co.micol.prj.emp.vo.Employee;
+import co.micol.prj.emp.vo.Jobs;
 
-@Repository(value="employeeMapper")
 public interface EmployeeMapper {
 
-	//사원검색
-	List<Map<String, Object>> 
-	  selectSearch(Map<String, Object> map);
-	
-	//직업목록
+	List<Employee> selectEmployees();
 	List<Jobs> selectJobs();
-	
-	//부서목록
 	List<Departments> selectDepartments();
 	
-	//부서단건조회
-	Departments selectDepartment(String department_id);	
-	
-	//부서등록
-	void insertDepartments(Departments bean);
+	int insertEmployees(Employee emp);
+	int updateEmployees(Employee emp);
+	int deleteEmployees(Employee emp);
 }

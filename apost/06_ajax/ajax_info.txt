@@ -1,5 +1,0 @@
-[
- {"id":1,"name":"park"},
- {"id":5,"name":"choi"},
- {"id":2,"name":"kim"}
- ]

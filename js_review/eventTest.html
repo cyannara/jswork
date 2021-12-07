@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .novisible { display: none;}
+    </style>
+</head>
+<body>
+    <input id="subject">
+    <input id="price">
+    <button id="btn">과목추가</button>
+    <ul>
+        <li>java<span class="novisible">3000</span></li>
+        <li>jsp<span class="novisible">2000</span></li>
+        <li>spring<span class="novisible">4000</span></li>
+    </ul>
+    <script>
+        document.querySelector("#btn").addEventListener("click", ()=>{
+            //document.querySelector("ul").innerHTML += '<li>react<span class="novisible">6000</span></li>';
+            let newLi = document.createElement("li");
+            let subject = document.querySelector("#subject").value
+            let price = document.querySelector("#price").value
+            //newLi.innerHTML = subject+'<span class="novisible">'+ price +'</span>';
+            newLi.innerHTML = `${subject}<span class="novisible">${price}</span>`;
+            document.querySelector("ul").appendChild(newLi);
+        });
+        //li   태그 mouseover: remove  mouseout:add 이벤트
+        //let lis = document.getElementsByTagName("li");
+        // for(li of lis) {
+        //     li.addEventListener("mouseover", ()=>{
+        //         console.dir(event.target);
+        //         if(event.target.nodeName == "LI")
+        //             event.target.querySelector("span").classList.remove("novisible");
+        //     })
+        //     li.addEventListener("mouseout", ()=>{
+        //         if(event.target.nodeName == "LI")    
+        //             event.target.querySelector("span").classList.add("novisible");
+        //     })
+        // }
+            
+        //이벤트위임(=그룹이벤트)
+        document.querySelector("ul").addEventListener("mouseover", ()=>{
+            if(event.target.nodeName == "LI")
+                event.target.querySelector("span").classList.remove("novisible");
+        });
+        document.querySelector("ul").addEventListener("mouseout", ()=>{
+            if(event.target.nodeName == "LI")
+                event.target.querySelector("span").classList.add("novisible");
+        });        
+    </script>
+</body>
+</html>

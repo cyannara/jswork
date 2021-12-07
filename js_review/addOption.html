@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="txt">
+    <button type="button" id="btn">추가</button>
+    <select id="fruit">
+        <option value="">선택</option>
+    </select>
+    <script>
+        //버튼 클릭 -> input 입력값을 <option> 만들어서 select에 추가
+        btn.addEventListener("click", function(){
+            let option = document.createElement("option");
+            option.innerHTML = txt.value;
+            fruit.appendChild(option);
+            //input 태그 클리어 
+            txt.value = '';
+        })
+        //select  change 이벤트
+        //선택값을 컨솔에 출력
+        fruit.addEventListener("change", function(){
+            console.log(fruit.options[fruit.selectedIndex].text);
+            document.body.style.backgroundColor = 
+                            fruit.options[fruit.selectedIndex].text
+        });
+
+        txt.addEventListener("keypress", function(){
+            if(event.keyCode == 13) {
+                btn.click();
+            }
+        })
+    </script>
+</body>
+</html>

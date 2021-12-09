@@ -20,7 +20,7 @@
 	</logger>
 	
 	<!-- Application Loggers -->
-	<logger name="co.micol.prj">
+	<logger name="com.yedam.myserver">
 		<level value="warn" />
 	</logger>
 	

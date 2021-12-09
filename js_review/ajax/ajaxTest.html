@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // //즉시 실행함수
+        // (function(){
+        //     //xhr 1.생성  2.onload콜백함수   3.open(연결)  4.send
+        //     const xhttp = new XMLHttpRequest();  // ※ 비동기 ※
+        //     xhttp.onload = function() {
+        //         console.log("response");   //1
+        //     }
+        //     xhttp.open("POST", "http://localhost/prj/todoInsert");
+        //     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //     xhttp.send("contents=ajaxtest");
+        // })();
+        // console.log("end");   //2
+
+        //삭제
+        function todoDelete(){
+            //xhr 1.생성  2.onload콜백함수   3.open(연결)  4.send
+            const xhttp = new XMLHttpRequest();  // ※ 비동기 ※
+            xhttp.onload = function() {
+                console.log("response");   //1
+            }
+            xhttp.open("GET", "http://localhost/prj/todoDelete?no=10" );
+            xhttp.send();
+        };
+        //todoDelete();
+    </script>
+</body>
+</html>

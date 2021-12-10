@@ -32,11 +32,16 @@ App = {
   },
 
   markAdopted: function(adopters, account) {
+    //분양이 된 pet의 버튼을 비활성화 시킴
+    //fetch 결과 [{id:1,price:100},{id:3,price:200}]
 	fetch('./adoptSelect')
     .then(response => response.json())
     .then(data=>{
 		for (i = 0; i < data.length; i++) {
-			$('.panel-pet').eq(data[i].id).find('button').text('Success').attr('disabled', true);
+			$('.panel-pet').eq(result[i].id)      //id에 해당하는 pet검색 
+		                 .find('button')          //버튼 태그 검색
+		                 .text('Success')         //버튼의 태그내용 변경
+		                 .attr('disabled', true); //버튼 비활성화 
 		}
 	})
   },

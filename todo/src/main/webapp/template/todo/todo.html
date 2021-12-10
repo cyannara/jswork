@@ -153,22 +153,27 @@ fetch("../todoSelect")
 // Add a "checked" symbol when clicking on a list item
 var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-	//var no = ____________________________
-    //var todoyn = ________________________//  checked 클래스 있으면 0, 
-    //update fecth
-	/* fetch("../todoUpdate",{
-		method: 'POST',
-		headers: {
-		      'Content-Type': 'application/x-www-form-urlencoded',
-		    },
-	//	body : _________________________   //질의문자열 no=2&todoyn=1
-	})
-	.then(response => response.json())
-	.then(result => {
-	    ev.target.classList.toggle('checked');
-	}) */
-	ev.target.classList.toggle('checked');
+  	if (ev.target.tagName === 'LI') {
+
+    
+    let no=ev.target.getAttribute('data-no');
+    let todoyn;
+    console.log(ev.target.classList.contains("checked"));
+	if(ev.target.classList.contains("checked")){
+		todoyn=1;
+	}else{todoyn=0;}
+    fetch("../todoUpdate",{method:'POST',
+				headers: {
+		     	 /* 'Content-Type': 'application/json' */
+		       'Content-Type': 'application/x-www-form-urlencoded',
+		    	},
+		    	body:"no="+no+"&todoyn="+todoyn
+    	
+    })
+    .then(response=>response.text())
+    .then(result=>{
+        ev.target.classList.toggle('checked');
+    });
   }
 }, false);
 
@@ -213,9 +218,9 @@ function newElement(todo) {
   span.onclick = function() {
       var li = this.parentElement;
       var no = li.getAttribute('data-no');  //data-no 속성을 읽기
-      fetch("../todoDelete?no=" + no )  //서버에 삭제 요청
-      .then( response => response.json() )      // json 변환
-      .then( result => { li.remove();  } )  // //li 태그 삭제
+      fetch("../todoDelete?no=" + no )  	//서버에 삭제 요청
+      .then( response => response.json() )  //json 변환
+      .then( result => { li.remove();  } )  //li 태그 삭제
   }  
 }
 </script>

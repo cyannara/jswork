@@ -2,6 +2,8 @@
 <html>
 <head>
 	<title>Home</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="./resources/images/favicon.png" />
 </head>
 <body>
 <h1>

@@ -6,7 +6,7 @@
         resultType="cartVO">
 	SELECT *
 	  FROM CART
-	 ORDER BY ID
+	 ORDER BY NO  
 </select>
 
 <delete id="cartDeleteAll">

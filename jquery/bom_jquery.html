@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>bom_jquery.html</title>
+<style>
+h1 { color : yellowgreen;}
+li:hover {color : yellowgreen;
+          cursor: pointer;}
+</style>
+</head>
+<body>
+<h1>The Browser Object Model (BOM)</h1>
+<p>
+There are no official standards for the Browser Object Model (BOM).
+</p>
+<p>
+Since modern browsers <br>have implemented (almost) <br>
+the same methods and properties for<br> JavaScript interactivity, it is often referred to, as methods and properties of the BOM.
+</p>
+<ul>
+<li>window.open() - open a new window
+<li class="my">window.close() - close the current window
+<li id="limove">window.moveTo() - move the current window
+<li>window.resizeTo() - resize the current window
+</ul>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script>
+	var win;
+	$("li:eq(0)").on("click", function(){	
+		win = window.open("","test","width=300,height=300");
+	});
+	$(".my").on("click", function(){	
+		win.close();
+	});	
+	$("limove#").on("click", function(){	
+		win.moveBy(0,100);
+	});	
+</script>
+</body>
+</html>

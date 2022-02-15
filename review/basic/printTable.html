@@ -1,0 +1,21 @@
+<html>
+<head></head>
+<body>
+    <h3>테이블 그리기</h3>
+    <table border="1">
+    <script>
+       for(i=0; i<5; i++){  //5행
+          if( i % 2 == 1) {   // 짝수행이면  i를 2로 나눈 나머지가 0이면
+            document.write("<tr style='background-color:yellow'>");  
+          } else {    
+            document.write("<tr>");    
+          }
+          for(j=0; j<7; j++) {  //7열
+            document.write("<td>" + i + "</td>");
+          }
+          document.write("</tr>");
+       }
+    </script>
+    </table>
+</body>
+</html>

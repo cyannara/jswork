@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+h1 { color : yellowgreen;}
+li:hover {color : yellowgreen;
+          cursor: pointer;}
+</style>
+</head>
+<body>
+<h1>The Browser Object Model (BOM)</h1>
+<p>
+There are no official standards for the Browser Object Model (BOM).
+</p>
+<p>
+Since modern browsers <br>have implemented (almost) <br>
+the same methods and properties for<br> JavaScript interactivity, it is often referred to, as methods and properties of the BOM.
+</p>
+<ul>
+<li>window.open() - open a new window
+<li class="my">window.close() - close the current window
+<li id="limove">window.moveTo() - move the current window
+<li>window.resizeTo() - resize the current window
+</ul>
+<script>
+	var win;
+	var lis = document.getElementsByTagName("li");
+	lis[0].addEventListener("click", function(){	
+		win = window.open("","test","width=300,height=300");
+	});
+	
+	var my = document.getElementsByClassName("my");
+	my[0].addEventListener("click", function(){	
+		win.close();
+	});	
+	
+	var limove = document.getElementById("limove");
+	limove.addEventListener("click", function(){	
+		win.moveBy(0,100);
+	});	
+</script>
+</body>
+</html>

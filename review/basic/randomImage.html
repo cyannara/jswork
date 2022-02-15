@@ -1,0 +1,19 @@
+<html>
+<head><title>randomImage.html</title></head>
+<body>
+    <h3>랜덤 이미지 테스트</h3>
+    <img src="./images/Koala.jpg" id="img1"/>
+    <script>
+        var imgs = ['Desert.jpg',
+                    'Penguins.jpg',
+                    'Tulips.jpg',
+                    'Jellyfish.jpg'];
+
+    //페이지 실행할 때 마다 다른 이미지가 보이게
+    //난수 생성 (0~ 배열크기)
+    var r = Math.floor(Math.random() * imgs.length);  //0~3
+    //이미지 변경
+    document.getElementById("img1").src = "./images/"+ imgs[r];
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript object</title>
+</head>
+
+<body>
+    <script>
+
+        var numbers = [1, 2, 3, 4];
+
+        var car = "sonata";
+
+        car = {
+            type: "sedan",
+            model: "EF",
+            color: "white",
+            start: function () { console.log("start"); },
+            fullName: function () { return this.type + " " + this.model + " " + this.color; },
+            name: "ef sonata"
+        };
+
+        console.log(car.type);
+        console.log(car["model"]);
+        console.log(car.fullName());
+
+    </script>
+
+
+</body>
+
+</html>

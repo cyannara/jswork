@@ -6,23 +6,23 @@
 </head>
 <body>
 
-	<h3>³¯Â¥ °è»ê</h3>
+	<h3>ë‚ ì§œ ê³„ì‚°</h3>
 	<input type="text" id="anniversary_day"/>
-	<input type="button" value="³²ÀºÀÏ¼ö°è»ê" onclick="calc_day()"/>
+	<input type="button" value="ë‚¨ì€ì¼ìˆ˜ê³„ì‚°" onclick="calc_day()"/>
 
 <script>
-	var today = new Date();   // 70³â 1¿ù 1ÀÏ ±âÁØÀ¸·Î ´©Àû½Ã°£
+	var today = new Date();   // 70ë…„ 1ì›” 1ì¼ ê¸°ì¤€ìœ¼ë¡œ ëˆ„ì ì‹œê°„
 	document.write(d.get);
 	
-	//¿äÀÏ Ãâ·Â
-	var weekName = ['ÀÏ','¿ù','È­','¼ö','¸ñ','±İ','Åä'];
-	document.write("¿À´ÃÀº" +  weekName[ d.getDay() ] + "¿äÀÏ<hr>")
+	//ìš”ì¼ ì¶œë ¥
+	var weekName = ['ì¼','ì›”','í™”','ìˆ˜','ëª©','ê¸ˆ','í† '];
+	document.write("ì˜¤ëŠ˜ì€" +  weekName[ d.getDay() ] + "ìš”ì¼<hr>")
 	
-	//»ì¾Æ¿Â ÀÏ¼ö
+	//ì‚´ì•„ì˜¨ ì¼ìˆ˜
 	var birth = new Date(2018,0,1);
-	document.write("»ì¾Æ¿Â ÀÏ¼ö: " + Math.round((today - birth)/1000/60/60/24) +"<br>");
+	document.write("ì‚´ì•„ì˜¨ ì¼ìˆ˜: " + Math.round((today - birth)/1000/60/60/24) +"<br>");
 	
-	//±â³äÀÏ±îÁö ³²Àº ÀÏ¼ö °è»ê  --> °úÁ¦
+	//ê¸°ë…ì¼ê¹Œì§€ ë‚¨ì€ ì¼ìˆ˜ ê³„ì‚°  --> ê³¼ì œ
 	
 </script>
 </body>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>스크립트안에 있는 반복</h2>
+    <p id="show"></p>
+
+    <script>
+
+        var text = "";
+        text += "<table border = 1>";
+        var days = ["2단", "3단", "4단", "5단", "6단", "7단", "8단", "9단"];
+        text += "<tr>";
+        days.forEach(function (o, i) {
+            text += "<td>" + o + "</td>";
+        })
+        text += "</tr>";
+        for (var j = 1; j <= 9; j++) {
+            text += "<tr>";
+            for (var i = 2; i <= 9; i++) {
+                text += "<td>" + i + " * " + j + " = " + (j * i) + "</td>";
+            }
+            text += "</tr>";
+        }
+        text += "</table>";
+        document.getElementById("show").innerHTML = text;
+    </script>
+</body>
+
+</html>

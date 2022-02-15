@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // $("table tr").mouseover(function() {
+            //     $(this).css("backgroundColor","yellow");
+            // })
+            // $("table tr").mouseout(function() {
+            //     $(this).css("backgroundColor","");
+            // })
+            $("table tr").on({
+                "mouseover": function () {
+                    $(this).css("backgroundColor", "yellow");
+                },
+                "mouseout": function () {
+                    $(this).css("backgroundColor", "");
+                }
+            });
+
+            var $tr = $("<tr>").append(
+                $("<td>").text("도시명"),
+                $("<td>").text("광주"),
+                $("<td>").html($("<button>").text("삭제"))
+            )
+            $("#tab").append($tr);
+        })
+    </script>
+</head>
+
+<body>
+    <table border="1" id="tab">
+        <tr>
+            <td>도시명</td>
+            <td>서울</td>
+            <td><button>삭제</button></td>
+        </tr>
+        <tr>
+            <td>도시명</td>
+            <td>부산</td>
+            <td><button>삭제</button></td>
+        </tr>
+        <tr>
+            <td>도시명</td>
+            <td>전주</td>
+            <td><button>삭제</button></td>
+        </tr>
+    </table>
+</body>
+
+</html>

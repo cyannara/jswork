@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Sort</title>
+    <script>
+        var fruits = ["Banana", "Orange", "Apple", "Mango"];
+        var numbers = [23, 4, 55, 8, 1, 10, 100];
+
+        function sortByString() {
+            fruits.sort();
+            document.getElementById("show").innerText = fruits;
+        }
+        function sortByNumber() {
+            numbers.sort(function (a, b) {
+                // 반환값이 -1 이면 오름차순, 0 동일값, +1 이면 내림차순.
+                return a - b;
+            });
+            document.getElementById("show").innerText = numbers;
+        }
+    </script>
+</head>
+
+<body>
+    <h2>JavaScript Array Sort</h2>
+
+    <button type="button" onclick="sortByString()">Sort String</button>
+    <button type="button" onclick="sortByNumber()">Sort Number</button>
+    <button type="button" onclick="sortByRandom()">Sort Random</button>
+
+    <p id="show"></p>
+</body>
+
+</html>

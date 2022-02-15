@@ -1,36 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-<script type="text/javascript">
-//ÀÌ¹ÌÁö Å©±âº¯°æ
-function sizeChange(){
-	document.getElementById("img1").style.width = "500px";
-	document.getElementById("img1").style.height = "500px";
-	document.getElementById("img1").style.border = "5px dotted red";
-}
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="refresh" content="5;url=./bom/window.jsp">
+<title>index.jsp</title>
+<script>
+//	location.assign("./bom/window.jsp");
 </script>
 </head>
 <body>
-<div id="content">À¯¹Ì³× È¨ÆäÀÌÁö...</div>
-<input type="button" value="³»¿ëº¯°æ" 
- onclick='document.getElementById("content").innerHTML = "Hello JavaScript";' />
-<img id="img1" src="images/Chrysanthemum.jpg" 
-     style="width:200px;height:200px; display:  " >
-<input type="button" value="Å©±âº¯°æ"  onclick='sizeChange()' />
-
-<input type="button" value="¼û±â±â" 
- onclick='document.getElementById("img1").style.display = "none";' />
-<input type="button" value="º¸ÀÌ±â" 
- onclick='document.getElementById("img1").style.display = "";' />
-
+  ì¸ë±ìŠ¤í˜ì´ì§€ì…ë‹ˆë‹¤.
+  5ì´ˆë’¤ì— í˜ì´ì§€ ì´ë™í•©ë‹ˆë‹¤.
 </body>
 </html>
-
-
-
-
-

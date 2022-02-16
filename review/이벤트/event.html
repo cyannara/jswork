@@ -26,22 +26,14 @@
     Enter your name: <input type="text" id="fname">
     <p id="copy"></p>
 
-    <p class="hello">list</p>
-    <p class="hello">nice</p>
-    <p class="hello">good</p>
-    <p class="hello">very</p>
+
 
     <div id="ms">Mouse Over</div>
 
     <script>
         var y = document.getElementById('fname');
         y.onchange = function () {
-            var list = document.getElementsByClassName("hello");
-            for (l in list) {
-                if (y.value == list[l].innerHTML) {
-                    list[l].style.display = "none";
-                }
-            }
+
             // y.value = y.value.toUpperCase();
             // document.getElementById('copy').innerHTML = y.value;
         }

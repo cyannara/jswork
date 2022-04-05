@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h3>03-01전역변수와전역객체속성</h3>
+    <script>
+
+        var avar = 'var';
+        let alet = 'let';   
+        
+        console.log(this.avar);
+        console.log(this.alet);
+
+        function run(){
+            console.log(this.avar);
+            console.log(this.alet);
+            console.log(avar);
+            console.log(alet);
+        }
+
+        run();
+        debugger
+
+    </script>
+</body>
+</html>

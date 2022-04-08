@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+  let alarm = {
+    notice : function(delay){
+      this.clear();
+      this.timer = setTimeout(this.msg, delay*1000);
+    },
+    clear : function(){
+      if(this.timer) {
+        clearTimeout(this.timer);
+        this.timer = undefined;
+      }
+    },
+    msg : function(){
+      console.log('alarm!')
+    }
+  }
+  alarm.notice(3);
+</script>
+
+</body>
+</html>

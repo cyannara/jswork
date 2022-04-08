@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <h2>The XMLHttpRequest post</h2>
+  <button type="button" onclick="loadDoc()">ajax 요청</button>
+  <form name="myForm">
+      <input name="userId" placeholder="userId">
+      <input name="title" placeholder="title">
+      <input type="radio" name="completed" value="true">완료
+      <input type="radio" name="completed" value="false" checked>미완료
+  </form>
+  <div id="demo"></div>
+
+<script>
+function loadDoc() {
+  const ajax = new XMLHttpRequest();                            // 1. XMLHttpRequest 객체 생성
+  const url = "https://jsonplaceholder.typicode.com/todos";     // 2. REST API 서버
+  ajax.onload = function() {                                    // 3. 응답을 처리하는 콜백 함수
+    if(ajax.status >=200 && ajax.status < 300) {
+      successCallback(ajax.response);
+    } else {
+      errorCallback(new Error(ajax.statusText));
+    }
+  };
+  ajax.onerror = errorCallback;                                // 4.에러 이벤트 발생시 처리할 에러 콜백 함수
+
+  const queryString1 = `userId=${myForm.userId.value}&
+                        title=${myForm.title.value}&
+                        completed=${myForm.completed.value}`;
+  const queryString2 = new URLSearchParams(new FormData(myForm)).toString();
+  ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  ajax.open("GET", url+"?"+queryString);                      // 5. 비동기 연결을 시작
+  ajax.send();                                                // 7. 전송을 시작 post이면 body에 파라미터 지정
+}
+
+function successCallback(response){
+  console.log('response', response)
+  demo.innerHTML = response;
+}
+
+function errorCallback(err){
+  console.log('error', err.message)
+}
+</script>
+
+</body>
+</html>

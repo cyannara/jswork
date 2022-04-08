@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <h2>The XMLHttpRequest Object</h2>
+  <button type="button" onclick="loadDoc()">ajax 요청</button>
+  <div id="demo"></div>
+
+<script>
+function loadDoc() {
+  const ajax = new XMLHttpRequest();                            // 1. XMLHttpRequest 객체 생성
+  const url = "https://jsonplaceholder.typicode.com/todos/";    // 2. REST API 서버
+  ajax.onload = function() {                                    // 3. 응답을 처리하는 콜백 함수
+    if(ajax.status >=200 && ajax.status < 300) {
+      successCallback(ajax.response);
+    } else {
+      errorCallback(new Error(ajax.statusText));
+    }
+  };
+  ajax.onerror = errorCallback;                                // 4. 에러 이벤트 발생시 처리할 에러 콜백 함수
+  ajax.open("GET", url);                                       // 5. 비동기 연결을 시작
+  ajax.setRequestHeader('Accept','application/json');          // 6. 요청 헤더 값을 설정
+  ajax.send();                                                 // 7. 전송을 시작
+}
+
+function successCallback(response){
+  let json1 = JSON.parse(response);
+  let json2 = eval("(" + response + ")" );
+  console.log('response', json1)
+  demo.innerHTML = json1.title +":" + json1.completed;
+}
+
+function errorCallback(err){
+  console.log('error', err.message)
+}
+</script>
+
+</body>
+</html>

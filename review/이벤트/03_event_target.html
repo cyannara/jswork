@@ -13,7 +13,9 @@
     <script>
         var plist = document.getElementsByClassName("word");
         for (temp of plist) {
-            temp.addEventListener("click", function(){
+            temp.addEventListener("click", function(e){
+                console.log(this.innerHTML);
+                console.log(e.target.innerHTML);
                 console.log(event.target.innerHTML);
             })
         }

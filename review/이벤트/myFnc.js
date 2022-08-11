@@ -1,3 +1,4 @@
+/* 02_3_event_function_externa.html에서 사용*/
 function innerHtml(str) {
     document.getElementById("demo").innerHTML = str;
 }

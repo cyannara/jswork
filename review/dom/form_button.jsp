@@ -9,12 +9,12 @@
 		var userid = document.frm1.userid.value;
 		
 		if(userid == "") {
-			alert("ÀÌ¸§ ÀÔ·Â!!");
+			alert("ì´ë¦„ ì…ë ¥!!");
 			return;
 		}
 		
-		if( confirm("Á¦ÃâÇÒ±î¿ä?"))
-			document.frm1.submit();   //Æû Àü¼Û(Á¦Ãâ)
+		if( confirm("ì œì¶œí• ê¹Œìš”?"))
+			document.frm1.submit();   //í¼ ì „ì†¡(ì œì¶œ)
 	}
 </script>
 </head>
@@ -22,7 +22,7 @@
 <form id="frm1" name="frm1" action="form_action.jsp">
 		userid: <input type="text" name="userid"><br>
 	  	username: <input type="text" name="username"><br>
-  <input type="button"   value="µî·Ï"  onclick="inputCheck()">
+  <input type="button"   value="ë“±ë¡"  onclick="inputCheck()">
 </form>
 </body>
 </html>

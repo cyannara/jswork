@@ -11,18 +11,18 @@ function inputCheck(){
 	//var username = document.getElementById("username").value;
 	var username = document.forms[0].username.value;
 	if(username == "") {
-		alert("ÀÌ¸§ ÀÔ·Â");
+		alert("ì´ë¦„ ì…ë ¥");
 		return false;
 	}
 	//select (drop down list)
-	var job = document.frm.job.selectedIndex;  //¼±ÅÃÇÑ ¿É¼Ç ¹øÈ£
+	var job = document.frm.job.selectedIndex;  //ì„ íƒí•œ ì˜µì…˜ ë²ˆí˜¸
 	if(job < 1) {
-		alert("Á÷¾÷ ¼±ÅÃ");
+		alert("ì§ì—… ì„ íƒ");
 		return false;
 	}
 	
-	//checkbox(¼±ÅÃ °¹¼ö)  Àû¾îµµ ÇÏ³ª ÀÌ»ó ¼±ÅÃ
-	var hobbys = document.getElementsByName("hobby");  //name ¹è¿­
+	//checkbox(ì„ íƒ ê°¯ìˆ˜)  ì ì–´ë„ í•˜ë‚˜ ì´ìƒ ì„ íƒ
+	var hobbys = document.getElementsByName("hobby");  //name ë°°ì—´
 	var cnt = 0 ;
 	for(i=0; i< hobbys.length; i++) {
 		if( hobbys[i].checked == true ) {
@@ -30,7 +30,7 @@ function inputCheck(){
 		}
 	}
 	if( cnt < 1) {
-		alert("Ãë¹Ì´Â ÇÏ³ª ÀÌ»ó ¼±ÅÃ");
+		alert("ì·¨ë¯¸ëŠ” í•˜ë‚˜ ì´ìƒ ì„ íƒ");
 		return false;
 	}
 	
@@ -40,7 +40,7 @@ function inputCheck(){
 </head>
 <body>
 	<!-- form, input (id, pw, name)
-       Á÷¾÷(select), °¡ÀÔµ¿±â(textarea), ¸ŞÀÏ¼ö½Å¿©ºÎ(checkbox) ¼ºº°(radio) Ãë¹Ì(checkbox)-->
+       ì§ì—…(select), ê°€ì…ë™ê¸°(textarea), ë©”ì¼ìˆ˜ì‹ ì—¬ë¶€(checkbox) ì„±ë³„(radio) ì·¨ë¯¸(checkbox)-->
 	<h2>HTML Forms</h2>
 
 	<form name="frm" action="member_reg_action.jsp" onsubmit="return inputCheck()">
@@ -50,30 +50,30 @@ function inputCheck(){
 		
 		<br>name:<br> <input type="text" name="username" id="username"
 		             tabindex="1" maxlength="5" autofocus="autofocus"> <br>
-		Á÷¾÷:<br> <select name="job" tabindex="3">
-			<option value="" selected="selected">-¼±ÅÃ-</option>
+		ì§ì—…:<br> <select name="job" tabindex="3">
+			<option value="" selected="selected">-ì„ íƒ-</option>
 			<option value="volvo">Volvo</option>
 			<option value="saab">Saab</option>
 			<option value="fiat">Fiat</option>
 			<option value="audi">Audi</option>
 		</select>
-		<br>°¡ÀÔµ¿±â:<br>
+		<br>ê°€ì…ë™ê¸°:<br>
 		<textarea name="message" rows="5" cols="30" tabindex="2"></textarea>
 		<br>
-		<br>Á¹¾÷ÀÏÀÚ <input type="date" name="gdate"/><br>
-		ÀÌ¸ŞÀÏ: <input type="email" name="email"/>
-		<br>¸ŞÀÏ¼ö½Å¿©ºÎ:  <input type="checkbox"/> <br><br>
-		<br>¼ºº°:<br> <input type="radio" name="gender" value="male"
+		<br>ì¡¸ì—…ì¼ì <input type="date" name="gdate"/><br>
+		ì´ë©”ì¼: <input type="email" name="email"/>
+		<br>ë©”ì¼ìˆ˜ì‹ ì—¬ë¶€:  <input type="checkbox"/> <br><br>
+		<br>ì„±ë³„:<br> <input type="radio" name="gender" value="male"
 			checked> Male<br> <input type="radio" name="gender"
 			value="female"> Female<br> <br>
-		<br>³ªÀÌ : <input type="range" min="20" max="40" name="age"/><br><br>
+		<br>ë‚˜ì´ : <input type="range" min="20" max="40" name="age"/><br><br>
 		
-		Ãë¹Ì : 	<input type="checkbox" name="hobby" value="ski" checked="checked"/>½ºÅ°
-				<input type="checkbox" name="hobby" value="game"/>°ÔÀÓ
-				<input type="checkbox" name="hobby" value="read"/>µ¶¼­ <br>
+		ì·¨ë¯¸ : 	<input type="checkbox" name="hobby" value="ski" checked="checked"/>ìŠ¤í‚¤
+				<input type="checkbox" name="hobby" value="game"/>ê²Œì„
+				<input type="checkbox" name="hobby" value="read"/>ë…ì„œ <br>
 			
-		<button type="submit">È¸¿ø°¡ÀÔ</button>
-		<button type="reset">ÃÊ±âÈ­</button> 
+		<button type="submit">íšŒì›ê°€ì…</button>
+		<button type="reset">ì´ˆê¸°í™”</button> 
 	</form>
 </body>
 </html>

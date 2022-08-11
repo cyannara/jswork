@@ -5,16 +5,16 @@
 <head>
 <title>form_submit.jsp</title>
 <script>
-	//ÀÔ·Â°ª Ã¼Å©
+	//ì…ë ¥ê°’ ì²´í¬
 	function inputCheck(){
-		//userid ÇÊ¼ö ÀÔ·Â Ã¼Å©
+		//userid í•„ìˆ˜ ì…ë ¥ ì²´í¬
 		var userid = document.frm1.userid.value;
 		if(userid == "" ) {
-			alert("¾ÆµğÀ» ÀÔ·Â!");
+			alert("ì•„ë””ì„ ì…ë ¥!");
 			return false;
 		}
 		
-		if( confirm("Á¦ÃâÇÒ±î¿ä?"))
+		if( confirm("ì œì¶œí• ê¹Œìš”?"))
 			return true;
 		else
 			return false;
@@ -25,7 +25,7 @@
 	<form id="frm1" name="frm1" action="form_action.jsp" onsubmit="return inputCheck()">
 		userid: <input type="text" name="userid"><br>
 	  	username: <input type="text" name="username"><br>
-	  <input type="submit" value="µî·Ï">
+	  <input type="submit" value="ë“±ë¡">
 	</form>
 </body>
 </html>

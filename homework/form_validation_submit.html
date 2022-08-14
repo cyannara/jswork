@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,6 +32,13 @@ function inputCheck(){
 		return false;
 	}
 	
+	//checkbox(선택 갯수)  적어도 하나 이상 선택
+	var hobbyChkLen = document.querySelectorAll("[name='hobby']:checked").length;
+	if(hobbyChkLen == 0) {
+		alert("hobby 적어도 하나는 선택");
+		return false;
+	} 
+
 	return true;
 }
 </script>

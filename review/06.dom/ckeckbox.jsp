@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 <title>ckeckbox.jsp</title>
 <script>
 	function regCheck() {

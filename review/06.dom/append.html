@@ -7,7 +7,23 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="result"></div>
-    
+    <input id="fruit"><button id="btn">추가</button>
+    <select id="list"></select>
+    <script>
+        btn.addEventListener("click", function(){
+            //input 태그의 입력값을 가지고 option태그를 만들어서 추가
+           
+        })
+        fruit.addEventListener("keypress", function(){
+            console.log(window.event.keyCode)
+            if(window.event.keyCode == 13) {
+                btn.click();
+            }
+        })
+
+        window.addEventListener("keydown", function(){
+            console.log(window.event.keyCode)
+        })
+    </script>
 </body>
 </html>

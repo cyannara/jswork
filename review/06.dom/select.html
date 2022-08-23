@@ -1,18 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
-<head><title>ÄŞº¸¹Ú½º Á¦¾î</title>
+<head>
+	<meta charset="UTF-8">
+	<title>ì½¤ë³´ë°•ìŠ¤ ì œì–´</title>
 <script>
 function moveRight() {
 	var l = document.getElementById("leftSel");
 	var r = document.getElementById("rightSel");
 	console.log( l.options[l.selectedIndex].text );
-	//¼±ÅÃÇ×¸ñ ¿À¸¥ÂÊ¿¡ Ãß°¡
+	//ì„ íƒí•­ëª© ì˜¤ë¥¸ìª½ì— ì¶”ê°€
 	var opt = document.createElement("option");
 	opt.innerHTML = l.options[l.selectedIndex].text;
 	r.appendChild(opt);
-	//¼±ÅÃÇ×¸ñ »èÁ¦
+	//ì„ íƒí•­ëª© ì‚­ì œ
 	l.remove(l.selectedIndex);
 }
 </script>
@@ -20,12 +20,12 @@ function moveRight() {
 <body>
 <!--  select.jsp  -->
 <select id="leftSel" size="5">
-	<option value="">¹Ù³ª³ª</option>
-	<option value="">»ç°ú</option>
-	<option value="">Å°À§</option>
+	<option value="">ë°”ë‚˜ë‚˜</option>
+	<option value="">ì‚¬ê³¼</option>
+	<option value="">í‚¤ìœ„</option>
 </select>
-<input type="button" onclick="moveRight()" value="¢º">
-<input type="button" onclick="" value="¢¸">
+<input type="button" onclick="moveRight()" value="â–¶">
+<input type="button" onclick="" value="â—€">
 <select id="rightSel" size="5" style="width:100px;"></select>
 </body>
 </html>

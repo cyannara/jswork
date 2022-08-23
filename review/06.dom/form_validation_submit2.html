@@ -39,10 +39,12 @@ function inputCheck() {
 <form action="form_action.jsp" onsubmit="return inputCheck()">
 	userid: 
 		<input type="text" name="userid"><br>
+
 	관심항목:
 		<input type="checkbox" name="hobby" value="jsp"> JSP
 		<input type="checkbox" name="hobby" value="java" checked="checked"> JAVA
 		<input type="checkbox" name="hobby" value="jquery"> JQUERY <br/>	
+		
 	성별:
 		<input type="radio" name="sex" value="M" checked="checked"> 남자	
 		<input type="radio" name="sex" value="F"> 여자   <br/>
@@ -50,9 +52,15 @@ function inputCheck() {
 	직업:
 		<input type="checkbox" name="job" value="P"> 프로그래머	
 		<input type="checkbox" name="job" value="D"> 디자이너   <br/>
-		
-		<input type="submit" value="등록">
-		<input type="reset" value="초기화">
+	
+	취미:
+		<input type="checkbox" name="hobby">스키
+		<input type="checkbox" name="hobby">독서
+		<input type="checkbox" name="hobby">영화
+		<input type="checkbox" name="hobby">게임 <br>
+
+	<input type="submit" value="등록">
+	<input type="reset" value="초기화">
 </form>
 </body>
 </html>

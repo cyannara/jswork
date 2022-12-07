@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  원시형 타입 - Number, String, Boolean, NaN, infinit <br>
+  객체형 타입 - Date, Object
+  <script>
+    num1 = 10
+    num2 = num1
+
+    num1 = 5;
+    console.log(num1, num2)
+
+    //---------------------------------------
+    name1 = "이순신"
+    name2 = name1;
+    name1 = "유관순";
+    console.log(name1, name2)
+
+    //---------------------------------------
+    dt1 = new Date()
+    dt2 = dt1
+    dt1.setFullYear(2020);
+    console.log(dt1.getFullYear(), dt2.getFullYear())
+
+    //---------------------------------------
+    arr1 = []  //arr1 = new Array()
+    arr2 = arr1;
+    arr1[0]('홍길동')
+    console.log(arr1, arr2)
+
+    //---------------------------------------
+    obj1 = {}  //    dt1 = new Object()
+    obj2 = obj1;
+    obj1['name']="바나나"   // obj1.name="바나나"
+    console.log(obj1, obj2)
+  </script>
+</body>
+</html>

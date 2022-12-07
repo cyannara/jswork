@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="saveBtn">저장</button>
+  <button id="saveConfirmBtn">확인후저장</button>
+  <button id="savecheckBtn">(상태변경)저장</button>
+  <script>
+    saveBtn.addEventListener('click', function(e){
+      this.setAttribute('disabled', 'disabled')
+    })
+
+    saveConfirmBtn.addEventListener('click', function(e){
+      if(confirm('저장하시겠습니까?')){
+        //폼전송
+        console.log('등록됨')
+      } else {
+        return;
+      }
+    })
+
+    let submitFlag = false;
+    function submitCheck(){
+      if(submitFlag) {
+        return submitFlag;
+      } else {
+        submitFlag = true;
+        return false;
+      }
+    }
+    savecheckBtn.addEventListener('click', function(e){
+      if(submitCheck()) {
+        //폼전송
+        console.log('등록됨')
+      }
+    })
+  </script>
+</body>
+</html>

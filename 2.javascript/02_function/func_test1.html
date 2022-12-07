@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="div1">test1</div>
+  <div id="div2">test2</div>
+  <div id="div3">test3</div>
+  <div id="div4">test4</div>
+  <div id="div5">test5</div>
+  <div id="div6">test6</div>
+
+  <script>
+    function changeGreen(el){
+      document.querySelector(el).style.backgroundColor = 'green'
+    }
+
+    function changeBlue(el){
+      document.querySelector(el).style.backgroundColor = 'blue'
+    }
+
+    function changeColor(colorIdx, el){
+      if(typeof colorIdx == "string") {
+        document.querySelector(el).style.backgroundColor = colorIdx
+      } else {
+        if (colorIdx>2 ) {
+          colorIdx = 0;
+        }
+        colorArr = ['red','blue','green']
+        document.querySelector(el).style.backgroundColor = colorArr[colorIdx]
+      }
+    }
+
+    function changeColors(colorIdx, ...els){
+      let color;
+      const colorArr = ['red','blue','green']
+      if(typeof colorIdx == "string") {
+        color = colorIdx;
+      } else {
+        if (colorIdx>colorArr.length-1 ) {
+          colorIdx = 0;
+        }
+        color = colorArr[colorIdx]
+      }
+      for(el of els) {
+        document.querySelector(el).style.backgroundColor = color
+      }
+    }
+
+    changeGreen("#div1")
+    changeBlue("#div2")
+    changeColors(3, "#div3")
+    changeColors('yellow',"#div4")
+    //changeColors('cyan', "#div5", "#div6")
+    changeColors('rgb(100,255,0)', "#div5", "#div6")
+
+    
+  </script>
+</body>
+</html>

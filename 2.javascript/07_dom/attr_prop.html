@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>attr_prop</title>
+</head>
+<body>
+<ul id="menu">
+	<li>홈</li>
+	<li>서비스</li>
+</ul>
+<script>
+	//1. 표준속성은 HTML attr과 DOM의 prop가 속성값을 공유함. 	
+	menu.setAttribute("type", "square");               // HTML attr을 변경
+	console.log("1:", menu.type );                     // DOM  prop로 조회(O)
+
+	menu.title = "메인메뉴";                           // DOM  prop로 변경
+	console.log("1:", menu.getAttribute("title") );    // HTML attr로 조회(O)
+	
+	//2. 표준속성이지만 속성명이 다른 경우가 있음
+	menu.setAttribute("class", "wide");                // HTML attr => class
+	console.log("2:",  menu.className );	           // DOM  prop => className
+	
+	//3. 비표준속성을 HTML attr로 지정하면 HTML,DOM 모두 접근가능
+	menu.setAttribute("info", "메뉴");	               // HTML attr로 변경
+	console.log("3:",  menu.info );                    // DOM  prop로 조회(O)
+	
+	//4. 비표준속성을 DOM  prop로 지정하면 DOM에서만 접근가능. 
+	menu.author = '관리자'                             // DOM  prop로 변경
+	console.log("4:",  menu.getAttribute('info') );    // HTML attr로 조회안됨(X)
+	
+	menu.obj = {id:1, name:'등록'}                     // DOM 속성값은 객체타입도 가능
+	console.log("4:",  menu.obj.name );
+</script>
+</body>
+</html>

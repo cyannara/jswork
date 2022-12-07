@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="title" class="">title</div>
+  <div id="content" class="">content</div>
+  <div id="footer" class="">
+    <ul>
+      <li>home</li>
+      <li>admin</li>
+    </ul>
+  </div>
+  <script>
+    title.classList.add('bold', 'padding10')
+    document.querySelectorAll('div').forEach(function(el){
+      if(el.classList.contains('padding10')){
+        el.classList.remove('padding10');
+      }
+      el.classList.add('padding10','red');
+    })
+
+    title.classList.toggle('red')
+    if( footer.classList.contains('padding10') ) {
+      footer.classList.replace('padding10', 'margin10')
+    }
+
+    const arrClass = ['copyright','inline']
+    const infos = document.querySelectorAll("#footer ul li");
+    infos.forEach(function(el){
+      el.classList.add( ...arrClass)
+    })
+  </script>
+</body>
+</html>

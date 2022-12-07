@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  <p id="pid">교체될 내용</p>
+<script>
+  //<p> 앨리먼트 생성
+  let p=document.createElement('p');
+  // 문단 텍스트 생성
+  let ptext = document.createTextNode('문단 텍스트 내용');
+  // 문단 텍스트를 태그에 채움
+  p.appendChild(ptext);
+  console.log(e.target.value + 'click!!')
+  //교체할 앨리먼트 선택
+  let originalp = document.getElementById('pid')
+
+  //부모태그에서 자식 앨리먼트 교체
+  let oldp = originalp.parentNode.replaceChild(p, originalp);
+</script>
+</body>
+</html>

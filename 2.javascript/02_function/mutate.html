@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function mutate(obj) {
+      obj.a = true;
+    }
+
+    const obj = { a: false };
+    mutate(obj)
+    console.log(obj.a); // prints true
+  </script>
+</body>
+
+</html>

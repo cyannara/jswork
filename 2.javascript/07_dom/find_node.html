@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>find_node</title>
+<script>
+	function imgChg() {
+		//var images = document.getElementsByTagName("img");      // 태그명
+		//var images = document.getElementsByName("goods");       // name 속성으로 검색
+		//var images = document.getElementsByClassName("classImg"); // class 속성으로 검색
+		var images = document.images;
+		for(i=0; i<images.length; i++) {
+			images[i].style.width = "200px";
+		}
+		// id 가 img1인 그림만 크기를 400으로 변경
+		var img1 = document.getElementById("img1");
+		img1.style.width = "400px";
+		console.log( document["goods"][0].src );
+	}
+</script>
+</head><body>
+<!--  findElement.html   -->
+<button onclick="imgChg()">이미지변경</button><br/>
+<img src="../images/Chrysanthemum.jpg" name="goods" id="img1">
+<img src="../images/Hydrangeas.jpg" name="goods">
+<img src="../images/Jellyfish.jpg" class="classImg">
+<img src="../images/Lighthouse.jpg" class="classImg">
+</body>
+</html>

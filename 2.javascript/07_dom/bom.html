@@ -9,6 +9,7 @@
 <body>
     <h3>broswer of model</h3>
     <ul>
+        <li>페이지이동</li>
         <li>open</li>
         <li>move</li>
         <li>close</li>
@@ -20,7 +21,10 @@
         let lis = document.getElementsByTagName("li");
         var naver;
         lis[0].addEventListener("click", function(){
-            naver = window.open("add.html","naver","width=300,height=300");
+            naver = window.open("add_jq.html","naver","width=300,height=300");
+            if(naver == null) {
+              alert('팝업차단')
+            }
         })
         lis[1].addEventListener("click", function(){
             naver.moveTo(500,100);
@@ -32,6 +36,7 @@
             console.log( naver.document.getElementById("txt").value );
         })
         //opener.document.
+        console.log(navigator.userAgent)
     </script>
 </body>
 </html>

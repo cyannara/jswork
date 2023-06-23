@@ -8,22 +8,25 @@
 </head>
 <body>
     <!--[if lte IE 8]>    
-        <script> 
-            String.prototype.trim = function() { 
-                return this.replace(/^\s+|\s+$/g,""); 
-            } 
-        </script> 
-    <![endif]-->    
-    <script>
-        String.prototype.ltrim = function(){
-            return this.replace(/^\s+/,'');
-        }
-        String.prototype.rtrim = function(){
-            return this.replace(/\s+$/,'');
-        }
-        let str = '  aa  bb  ';
-        console.log(":"+str.ltrim()+":");
-        console.log(":"+str.rtrim()+":");
-    </script>
+           <script> 
+            </script> 
+          <![endif]-->  
+
+
+<script>
+  String.prototype.trim = function () {
+    return this.replace(/^\s+|\s+$/g, '');
+  }
+
+  String.prototype.ltrim = function () {
+    return this.replace(/^\s+/, '');
+  }
+  String.prototype.rtrim = function () {
+    return this.replace(/\s+$/, '');
+  }
+  let str = '  hello everyone    ';
+  console.log(":" + str.ltrim() + ":");
+  console.log(":" + str.rtrim() + ":");
+</script>
 </body>
 </html>

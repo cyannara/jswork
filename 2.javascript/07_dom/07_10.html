@@ -15,7 +15,8 @@
   </ul>
   <script>
     mainmenu.addEventListener('click', function(e){
-      let menulabel = e.target.tagName == 'A' ? e.target.parentNode.childNodes[0].textContent : e.target.childNodes[0].textContent;
+      let menulabel = e.target.tagName == 'A' ? 
+                        e.target.parentNode.childNodes[0].textContent : e.target.childNodes[0].textContent;
       switch(menulabel) {
         case '메뉴1':break;
         case '메뉴2':break;
@@ -24,6 +25,9 @@
       }
       console.log(menulabel + '페이지 이동!')
     })
+
+    let newCard = document.querySelector(".card").cloneNode(true)
+    document.querySelector(".wrapper").append(newCard)
 
     showevent.addEventListener('click', function(e){
       console.log('이벤트 팝업 표시');

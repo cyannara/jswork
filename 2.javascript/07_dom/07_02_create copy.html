@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="delid">삭제예정</div>
+  <div id="parentdiv">
+    <span id="childspan">삭제예정 child</span>
+  </div>
+  <script>
+        let div = document.createElement('div');
+        let span = document.createElement('span');
+        span.innerText = "HTML 문서 샘플";
+        div.appendChild(span);
+        document.body.append(div);
+
+        document.body.innerHTML += '<div><span>innerHTML에 태그문자열을 직접입력하여 DOM 생성</span></div>'
+
+        document.getElementById('delid').remove()
+
+        let parent = document.getElementById("parentdiv")
+        let child = document.getElementById("childspan")
+        parent.removeChild(child)
+
+        parent.innerHTML = ""
+  </script>
+</body>
+</html>

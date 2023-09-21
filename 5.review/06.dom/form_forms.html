@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="shortcut icon" type="image/x-icon" href="../images/Chrysanthemum.jpg" />
+<script>
+	window.onload = function() {
+		// input 태그 
+		console.log(document.frm1.username.value);
+		console.log(document.forms["frm1"].username.value);
+		console.log(document.forms[0].username.value);
+		document.title = "타이틀 변경";
+	}
+</script>
+</head>
+<body>
+<!--  document.html -->
+<form name="frm1">
+	<input type="text" name="username" id="username" value="홍길동"/>	
+	<input type="submit" value="수정">
+</form>
+<form name="frm2">
+	<input type="text" name="username"/>
+	<input type="submit" value="삭제">
+</form>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+//문자열 분리해서 배열에 넣기
+var str2 = "가,나,다,라";
+var arr = str2.split(",");
+console.dir(arr);
+
+
+//1상수를 이용한 배열선언
+	var a = ['사과','바나나','키위'];
+	document.write(typeof a)
+	console.log(a);
+	var s1 = a.join("-");
+	console.log( typeof s1);
+	console.log(s1);
+	//console.log(a.sort());
+	console.log(a.shift());
+	
+//2array 생성자	
+	var b = new Array();	
+	b[0] = "홍길동";
+	b[1] = "이순신";
+	b.push("을지문덕");
+	document.write(typeof b);
+	console.dir(b);
+	
+	var strName = b.pop();
+	
+//3 배열첨자 
+	var c = new Array();
+	c["name"] = "홍길동";
+	c["addr"] = "대구";
+	c["age"] = 20;
+	console.dir(c);
+	console.log(c);
+	console.log(c["name"]);
+	
+	
+// 
+	var d = [ {name:'choi', age:20 }
+	         ,{name:'park', age:30 }
+	         ,{name:'kim', age:10 }
+	        ]
+ //park(2번째회원)의 나이를 출력
+   console.log(d[1].name);
+   
+   //정렬함수 이용
+   d.sort(function(a, b){return a.age - b.age});
+   console.log(d);
+   
+   
+   var text = '{ "employees" : [' +
+   '{ "firstName":"John" , "lastName":"Doe" },' +
+   '{ "firstName":"Anna" , "lastName":"Smith" },' +
+   '{ "firstName":"Peter" , "lastName":"Jones" } ]}';
+   var obj = JSON.parse(text);
+   console.log(obj);
+</script>
+</body>
+</html>

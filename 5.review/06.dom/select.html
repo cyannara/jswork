@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>콤보박스 제어</title>
+<script>
+function moveRight() {
+	var l = document.getElementById("leftSel");
+	var r = document.getElementById("rightSel");
+	console.log( l.options[l.selectedIndex].text );
+	//선택항목 오른쪽에 추가
+	var opt = document.createElement("option");
+	opt.innerHTML = l.options[l.selectedIndex].text;
+	r.appendChild(opt);
+	//선택항목 삭제
+	l.remove(l.selectedIndex);
+}
+</script>
+</head>
+<body>
+<!--  select.jsp  -->
+<select id="leftSel" size="5">
+	<option value="">바나나</option>
+	<option value="">사과</option>
+	<option value="">키위</option>
+</select>
+<input type="button" onclick="moveRight()" value="▶">
+<input type="button" onclick="" value="◀">
+<select id="rightSel" size="5" style="width:100px;"></select>
+</body>
+</html>

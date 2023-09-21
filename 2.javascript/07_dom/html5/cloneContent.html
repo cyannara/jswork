@@ -1,0 +1,25 @@
+<html>
+<head>
+<title>HTML DOM range cloneContents() method</title>   
+</head>
+<body>
+    <h1>GeeksforGeeks</h1>
+     
+<div>
+    <p>This is the Range Content1</p>
+    <p>This is the Range Content2</p>
+</div>
+ 
+    <button onclick="clone()">Click To Clone Contents</button>
+</body>
+<script>
+    let range = document.createRange();
+    let referenceNode = document.getElementsByTagName('div').item(0).firstElementChild;
+    range.selectNode(referenceNode);
+    function clone(){
+        documentFragment = range.cloneContents();
+        document.body.appendChild(documentFragment);
+        console.log(documentFragment)   
+    }
+</script>
+</html>

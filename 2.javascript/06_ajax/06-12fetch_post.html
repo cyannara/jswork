@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <h2>fetch method</h2>
+  <form name="myForm">
+    <input name="userId" placeholder="userId">
+    <input name="title" placeholder="title">
+    <input type="radio" name="completed" value="true">완료
+    <input type="radio" name="completed" value="false" checked>미완료
+</form>
+  <button type="button" onclick="loadDoc()">ajax 요청</button>
+  <div id="demo"></div>
+
+<script>
+function loadDoc() {
+  const url = "https://jsonplaceholder.typicode.com/todos/";  
+  const queryString1 = `userId=${myForm.userId.value}&title=${myForm.title.value}&completed=${myForm.completed.value}`;
+  const formData = new FormData(myForm);
+
+  fetch(url, {method:'post',
+             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, 
+             body: queryString1  })
+  .then(response=> response.json() )
+  .then(response=> successCallback(response) )
+  .catch(err=> errorCallback(err) )   
+}
+
+function successCallback(response){
+  console.log('response', response)
+  demo.innerHTML = response.title;
+}
+
+function errorCallback(err){
+  console.log('error', err)
+}
+</script>
+</body>
+</html>

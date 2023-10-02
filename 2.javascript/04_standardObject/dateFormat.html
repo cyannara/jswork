@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function dateFormat1(date) {
+            let month = date.getMonth() + 1;
+            let day = date.getDate();
+            let hour = date.getHours();
+            let minute = date.getMinutes();
+            let second = date.getSeconds();
+
+            month = month >= 10 ? month : '0' + month;
+            day = day >= 10 ? day : '0' + day;
+            hour = hour >= 10 ? hour : '0' + hour;
+            minute = minute >= 10 ? minute : '0' + minute;
+            second = second >= 10 ? second : '0' + second;
+
+            return date.getFullYear() + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+        }
+
+        const TIME_ZONE = 9 * 60 * 60 * 1000; // 9시간
+
+        function ymdhms(date) {
+            return new Date(date.getTime() + TIME_ZONE).toISOString().replace('T', ' ').slice(0, -5);
+            // 2023-10-01 11:50:05
+        }
+
+        function ymd(date) {
+
+            return new Date(new Date() + TIME_ZONE).toISOString().split('T')[0];
+            // 2023-10-01
+        }
+
+        function hms(date){
+            return date.toTimeString().split(' ')[0];
+            //11:50:05
+        }
+
+        const dt = new Date();
+        console.log(ymdhms(dt));
+        console.log(ymd(dt));
+        console.log(hms(dt));
+    </script>
+</body>
+
+</html>

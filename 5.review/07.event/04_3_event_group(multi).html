@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hi {background-color : cyan}
+    </style>
+</head>
+<body>
+    <ul id="myUL">
+        <li id="1">spring <span>X</span></li>
+        <li id="2">java <span>X</span></li>
+        <li id="3">thymeleaf <span>X</span></li>
+    </ul>
+    <script>
+        myUL.addEventListener("click", function(e){
+            if(e.target.tagName == 'SPAN'){
+                console.log(e.target)
+                e.target.parentElement.remove();
+            }
+        })
+
+        myUL.addEventListener("click", function(e){
+            if(e.target.tagName == 'LI'){
+                console.log(e.target)
+                e.target.classList.toggle("hi")
+            }
+        })   
+    </script>
+</body>
+</html>

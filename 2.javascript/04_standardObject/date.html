@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: '굴림체';
+        }
+    </style>
+</head>
+<body>
+    <!--
+        JavaScript 날짜의 기반은 1970년 1월 1일 UTC 자정과의 시간 차이를 밀리초 단위로 나타낸 것
+        UTC(세계 협정시)
+        GMT(그리니치 평균시)
+     -->
+     <script>
+        const dt = new Date();
+        document.write('string: ', dt.toString(), '<br>');                       //'Mon Oct 02 2023 11:49:49 GMT+0900 (한국 표준시)'
+        document.write('dateString: ', dt.toDateString(), '<br>');               //'Mon Oct 02 2023'
+        document.write('timeString: ', dt.toTimeString(), '<hr>');               //'11:49:49 GMT+0900 (한국 표준시)'
+        
+        document.write('localeString: ', dt.toLocaleString(), '<br>');           //'2023. 10. 2. 오전 11:49:49'
+        document.write('localeDateString: ', dt.toLocaleDateString(), '<br>');   //'2023. 10. 2.'
+        document.write('localeTimeString: ', dt.toLocaleTimeString(), '<hr>');   //'오전 11:49:49'
+
+        document.write('gmt: ', dt.toGMTString(), '<br>');                       //'Mon, 02 Oct 2023 02:49:49 GMT'
+        document.write('utc: ', dt.toUTCString(), '<hr>');                       //'Mon, 02 Oct 2023 02:49:49 GMT'
+
+        document.write('iso: ', dt.toISOString(), '<br>');                       //'2023-10-02T02:49:49.945Z'
+        document.write('json: ', dt.toJSON(), '<br>');                           //'2023-10-02T02:49:49.945Z'
+     </script>
+</body>
+</html>

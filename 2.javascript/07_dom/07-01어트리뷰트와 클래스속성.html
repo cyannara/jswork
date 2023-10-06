@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="menu" info="myDiv">
+        <li id="menu1">홈</li>
+        <li id="menu2">서비스</li>
+        <li id="menu3">고객지원</li>
+    </ul>
+    <script>
+        let elem = document.getElementById("menu");
+        console.log(elem.outerHTML);
+
+        // html 어트리뷰트  DOM 프로퍼티
+        console.log("html attr", elem.getAttribute('Info'));
+        console.log("dom prop", elem.info);
+
+        //html attr 속성
+        elem.setAttribute('attr', 123);
+        //DOM prop 속성
+
+
+
+
+    </script>
+</body>
+</html>

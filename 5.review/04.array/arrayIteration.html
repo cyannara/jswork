@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="show"></p>
+    <script>
+        
+        console.log("----------------")
+        var numbers = [45, 4, 9, 16, 25];
+        numbers.sort();
+        var $tag = "";
+        $tag = "<ul>";
+        var sum = 0;
+        numbers.forEach(myCall);
+        function myCall(o) {
+            $tag += "<li>" + o + "</li>";
+            sum += o;
+        }
+        $tag += "</ul>";
+        $tag += "<h2>합계는 " + sum + "입니다.</h2>";
+        document.getElementById('show').innerHTML = $tag;
+
+        // Array.map()
+        var numberCp = numbers.map(myMapFunc);
+        function myMapFunc(val, ind, ary) {
+            return val + 10;
+        }
+        for (val of numberCp) {
+            console.log(val);
+        }
+        console.log("----------------")
+
+        // Array.filter()
+        var filterNum = numbers.filter(function(val, ind, ary){
+            return val > 10;
+        })
+        for (val of filterNum) {
+            console.log(val);
+        }
+        console.log("----------------")
+
+        // Array.every(), Array.some(), Array.find()
+        var everyNum = numbers.some(function(val, ind, ary){
+            return val > 10;
+        })
+        console.log(everyNum);
+
+
+    </script>
+</body>
+
+</html>

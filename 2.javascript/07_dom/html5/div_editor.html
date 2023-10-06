@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .editor {
+            margin-top: 10px;
+            border: 1px solid gray;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="https://www.tiny.cloud/blog/using-html-contenteditable/">
+        <h3>Using HTML and contenteditable to build a rich text editor</h3>
+    </a>
+    <div class="toolbar">
+        <button id="boldButton" data-action="">Bold</button>
+        <button id="italicButton">Italic</button>
+        <button id="underlineButton">Underline</button>
+        <input type="button" value="에디터로 보기" onclick="convertToEditor()" />
+        <input type="button" value="HTML로 보기" onclick="convertToHTML()" />
+        <button id="undoButton">Undo</button>
+        <button id="redoButton">Redo</button>
+    </div>
+    <div id="editor" contenteditable="true" role="textbox">
+        Start Editing...
+    </div>
+    <div class="editorHTMLDIV"></div>
+    <script>
+        const editor = document.getElementById("editor");
+        const boldButton = document.getElementById("boldButton");
+        const italicButton = document.getElementById("italicButton");
+        const underlineButton = document.getElementById("underlineButton");
+        const undoButton = document.getElementById('undoButton');
+        const redoButton = document.getElementById('redoButton');
+        const editorHTMLDIV = document.querySelector('.editorHTMLDIV');
+        const history = {
+            back: [],
+            forward: []
+        };
+
+        editorHTMLDIV.style.display = 'none';
+
+        function performAction(command) {
+            if (
+                !history.back.length ||
+                history.back[history.back.length - 1] != editor.innerHTML
+            ) {
+                history.back.push(editor.innerHTML);
+            }
+            document.execCommand(command, false, null);
+            editor.focus();
+        }
+
+        boldButton.addEventListener("click", function () {
+            performAction("bold");
+        });
+
+        italicButton.addEventListener("click", function () {
+            performAction("italic");
+        });
+
+        underlineButton.addEventListener("click", function () {
+            performAction("underline");
+        });
+
+        undoButton.addEventListener("click", function () {
+            if (!history.back.length) {
+                return;
+            }
+            history.forward.push(editor.innerHTML);
+            editor.innerHTML = history.back.pop();
+            editor.focus();
+        });
+
+        redoButton.addEventListener("click", function () {
+            if (!history.forward.length) {
+                return;
+            }
+
+            history.back.push(editor.innerHTML);
+            editor.innerHTML = history.forward.pop();
+            editor.focus();
+        });
+
+        editor.addEventListener("keydown", function () {
+            history.forward.length = [];
+            history.back.push(editor.innerHTML);
+        });
+
+        //HTML코드로 보기
+        function convertToHTML() {
+            editorHTMLDIV.innerText = editor.innerHTML;
+            editorHTMLDIV.style.display="";;
+            editor.style.display="none";;
+        }
+
+        //에디터 화면으로 보기
+        function convertToEditor() {
+            editor.innerHTML = editorHTMLDIV.innerText;
+            editor.style.display="";
+            editorHTMLDIV.style.display="none";
+        }
+
+        /*
+                document.execCommand('Italic')           // 기울이기
+                document.execCommand('Underline')        // 밑줄
+                document.execCommand('StrikeThrough')    // 중간줄
+                document.execCommand('Cut')              // 자르기
+                document.execCommand('Copy')             // 복사하기
+                document.execCommand('Paste')            // 붙혀넣기
+                document.execCommand('Undo')             // 실행취소
+                document.execCommand('Redo')             // 다시실행
+                document.execCommand('insertorderedList')    // 글번호 매기기
+                document.execCommand('insertunorderdList')   // 글머리 매기기
+                document.execCommand('outdent')          // 내어쓰기
+                document.execCommand('indent')           // 들여쓰기
+                document.execCommand('justifyleft')      // 왼쪽정렬
+                document.execCommand('justifycenter')    // 가운데정렬
+                document.execCommand('justifyright')     // 오른쪽정렬
+        */
+    </script>
+</body>
+
+</html>

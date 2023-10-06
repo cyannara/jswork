@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="result"></div>
+<script>
+	var s = "";
+	s += "<table border='1'>";
+	for(i=0;i<10;i++) {
+		s+= "<tr><td>" + i +"</td></tr>";	
+	}	
+	s += "</table>";
+	document.getElementById("result").innerHTML = s;
+
+</script>
+</body>
+</html>

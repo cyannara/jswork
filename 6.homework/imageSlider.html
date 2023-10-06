@@ -1,0 +1,28 @@
+<html>
+<head><title>imageSlider.html</title>
+<style>
+    img { width: 200px;}
+</style>
+</head>
+<body>
+    <h3>이미지 슬라이더</h3>
+    <img src="./images/Koala.jpg" id="img1"/>
+    <button type="button" onclick="moveR()">▶</button>
+    <script>
+        var imgs = ['Desert.jpg',
+                    'Penguins.jpg',
+                    'Tulips.jpg',
+                    'Jellyfish.jpg'];
+    
+        var pos = 0; 
+        
+        function moveR(){
+            pos++;
+            if(pos >= imgs.length) {
+                pos = 0;
+            }
+            document.getElementById("img1").src="./images/" +imgs[pos];
+        }
+    </script>
+</body>
+</html>

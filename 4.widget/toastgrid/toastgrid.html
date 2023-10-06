@@ -12,7 +12,10 @@
   <button type="button" id="btnAdd">행추가</button>
   <button type="button" id="btnSave">저장</button>
   <div id="grid"></div>
+  
+  <script src="basic-dummy.js"></script>
   <script>
+    //const gridData = []
     btnAdd.addEventListener("click", function(){
       grid.appendRow({grade:"1"});
     })
@@ -44,25 +47,30 @@
         this.el.select();
       }
     }
-
-    class CustomSliderRenderer {
+/*
+    class CustomRadioRenderer {
       constructor(props) {
+        const v = String(props.value);
+
         const el1 = document.createElement('input');
         el1.type = 'radio';
         el1.name = 'r1';
         el1.value = '1'
-       // el1.innerText = 'YES'
-       // el1.disabled = true;
+        //if( v == 1 || v==2 )
+          el1.setAttribute("checked", true)
 
         const el2 = document.createElement('input');
         el2.type = 'radio';
-        el2.value = '0'
         el2.name = 'r1';
-      //  el2.innerText = 'YES'
-       // el2.disabled = true;
+        el2.value = '2'
+ 
 
         const div = document.createElement('div');
-        div.append(el1,"YES",el2,"NO")
+        div.appendChild(document.createTextNode(v))
+        div.appendChild(el1)
+        div.appendChild(document.createTextNode("YES"))
+        div.appendChild(el2)
+        div.appendChild(document.createTextNode("NO"))
         this.el = div;
         this.render(props);
       }
@@ -72,16 +80,26 @@
       }
 
       render(props) {
-         const v = String(props.value);
-console.log(this.el)
-        //  if( v == 0 )
-        //   this.el.querySelector('[value="1"]').checked = true
-        //  else if( v == 1 )
-        //   this.el.querySelector('[value="0"]').checked = true
+
       }
     }
+*/
+    class CustomTextRenderer {
+      constructor(props) {
+        const div = document.createElement('div');
+        div.className = "tootip";
+        this.el = div;
+        this.render(props);
+      }
 
-    const gridData = []
+      getElement() {
+        return this.el;
+      }
+
+      render(props) {
+        this.el.innerText = String(props.value);
+      }
+    }   
 
     const grid = new tui.Grid({
       el: document.getElementById('grid'),
@@ -96,6 +114,9 @@ console.log(this.el)
         {
           header: 'Artist',
           name: 'artist',
+          renderer: {
+            type: CustomTextRenderer
+          },
           editor: {
             type: CustomTextEditor,
             options: {
@@ -145,9 +166,6 @@ console.log(this.el)
             useListItemText: true
           },
           formatter: 'listItemText',
-          renderer: {
-            type: CustomSliderRenderer
-          },
           editor: {
             type: 'radio',
             options: {

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addtr.html</title>
+</head>
+<body>
+    <button id="btn">추가</button>
+    <table border="1">
+        <tr><td>이름</td><td>성적</td><td></td></tr>
+    </table>
+    <script>
+        datas = [{name:'홍길동',score:100},
+                 {name:'김유신',score:60}];
+        //버튼 클릭 하면 빈줄 추가 tr-td, td
+        let tb = document.querySelector("table");
+        btn.addEventListener("click", function(){
+            for(data of datas){
+                let tr = tb.insertRow(1);
+                let td1 = tr.insertCell();
+                let td2 = tr.insertCell();
+                let td3 = tr.insertCell();
+                td1.innerHTML = data.name;
+                td2.innerHTML = data.score;
+                td3.innerHTML = "<button type='button'>X</button>";
+            }
+        });
+        //그룹이벤트  table 태그에 row 삭제 이벤트를 지정
+        //table에 클릭이벤트
+        tb.addEventListener("click", function(){
+            //이벤트 타켓이 버튼인지 확인  : nodeName =="BUTTON"
+            if(event.target.nodeName == "BUTTON") {
+                //버튼의 부모의 부모 태그(tr) 찾기 : .parentElementNode  or closest() 
+                //remove() 실행
+                event.target.closest("tr").remove();
+            }
+        });
+
+    </script>
+</body>
+</html>

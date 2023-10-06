@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  
+<body>
+    참고사이트 : <a href="https://ko.javascript.info/selection-range#ref-96">https://ko.javascript.info/selection-range#ref-96</a>
+    <h1>GeeksforGeeks</h1>
+    <p id="parent">
+        Child 1<br>
+        Child 2<br>
+        Child 3<br>
+        Child 4<br>
+    </p>
+   <p>    
+    Child 3<br>
+    Child 4<br>
+   </p>
+    <script>
+        const example = document.getElementById('parent');
+        const range = document.createRange();
+        range.setStart(example, 0);
+        range.setEnd(example, 8);
+        //console.log(range);
+        console.log(range.toString());
+    </script>
+</body>
+  
+</html>

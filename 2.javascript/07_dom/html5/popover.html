@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="mypopover" >등록하려면...</div>
+    <button id="toggleBtn">버튼</button>
+    <div></div>
+    <script>
+        function supportsPopover() {
+            return HTMLElement.prototype.hasOwnProperty("popover");
+        }
+
+        const popover = document.getElementById("mypopover");
+        const toggleBtn = document.getElementById("toggleBtn");
+
+        const popoverSupported = supportsPopover();
+
+        if (popoverSupported) {
+            popover.popover = "auto";
+            toggleBtn.popoverTargetElement = popover;
+            toggleBtn.popoverTargetAction = "toggle";
+        } else {
+            console.log("Popover API not supported.");
+        }
+    </script>
+</body>
+
+</html>

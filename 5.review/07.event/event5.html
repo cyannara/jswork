@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+window.onload = function() {  //페이지가 로딩된 후 발생 이벤트
+	
+	var userName = document.getElementById("userName");
+	userName.onclick = function() {                       // onmouserover 
+		userName.style.backgroundColor = 'cyan';
+	}
+	userName.onmouseover = function() {                   // onmouserover 
+		userName.style.backgroundColor = 'yellow';
+	}	
+	userName.onmouseout = function() {                   // onmouserover 
+		userName.style.backgroundColor = 'red';
+	}
+	userName.onkeydown = function() {                   // onmouserover
+		console.log(userName.value);
+	}	
+	
+	var userpw = document.getElementById("userpw");
+	userpw.onchange = function() {                   // onmouserover 
+		userpw.style.backgroundColor = 'orange';
+	}
+}	
+</script>
+
+</head>
+<body>
+<input type="text" id="userName"/>
+<input type="text" id="userpw"/>
+<div id="mydiv">  클릭미!!  </div>
+<button id="btn">버튼</button>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="show1"></div>
+    <script>
+        // Array
+        var cars = new Array("Saab", "Volvo", "BMW"); // X
+        cars = ["Saab", "Volvo", "BMW"]; // O
+        cars.push("Benz"); // pop()
+        cars.unshift("SM5"); // shift()
+
+        var text, fLen, i;
+        fLen = cars.length;
+        text = "<ul>";
+        // for(i=0; i<fLen; i++){
+        //     text += "<li>" + cars[i] + "</li>";
+        // }
+        for (x in cars) {
+            text += "<li>" + cars[x] + "</li>";
+        }
+        text += "</ul>";
+        document.getElementById('show1').innerHTML = text;
+
+        // forEach()
+        cars.forEach(function(o, i){
+            console.log(o + ", " + i);
+        })
+
+    </script>
+</body>
+
+</html>

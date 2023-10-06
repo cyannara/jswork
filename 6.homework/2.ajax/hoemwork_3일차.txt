@@ -1,0 +1,19 @@
+1. pet에 분양처리
+  Adopt 버튼 그룹이벤트 지정
+	post 방식, 
+	파라미터: id,price(prompt)
+        콜백함수 : 버튼 비활성화, 버튼라벨	
+
+2. emp crud ajax 
+
+3. user 수정처리
+
+4. 계산기(calc.html)
+
+
+
+
+
+
+
+

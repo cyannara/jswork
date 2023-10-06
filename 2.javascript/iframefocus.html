@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="iframeload()">아프레임열기</button>
+    <input type="text">
+    <div id="frame"></div>
+    <input>
+    <input>
+    <script>
+        function iframeload(){
+            frame.innerHTML =  '<iframe src="iframe.html" ></iframe>';
+            window.setTimeout(function(){let iframe = document.querySelector("iframe")
+            iframe.contentWindow.focus();}, 500);
+        }
+    </script>
+</body>
+</html>

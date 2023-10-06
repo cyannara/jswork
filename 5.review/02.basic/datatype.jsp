@@ -1,0 +1,85 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+<script>
+	var a;    // undefined   ≒  NullPonterException
+	console.log(typeof a);
+	
+	a = 5.123456;    // Number 객체
+	console.log(typeof a);
+	console.log(a.toPrecision(3));
+	
+	a = 'happy';	// String 객체
+	console.log(typeof a);
+	console.log(a.length);
+
+	// 연산자 ==   ===
+	var b, c;
+	b = "5";
+	c = 5 ;
+	console.log("b==c : " + ( b==c ));     // value만 비교        --> true
+	console.log("b===c : " + ( b===c ));   // value, type 비교  --> false
+
+	//array   []
+	var d = ["바나나","사과","키위"];
+	console.log('d[1]' + d[1] );
+	
+	//배열에 원소 추가
+	d.push("포도");
+	d[4] = "메론";
+	d["a1"] = "수박";
+	//출력
+	console.log("배열======");
+	console.log(d);
+	console.dir(d);
+	
+	//object  {}
+	var dept = { 'deptId' : 100,
+			     'deptName':'총무부',
+			     'locationId' : 1000
+			     }
+	console.log("부서명: " + dept.deptName );
+	
+	// 객체배열
+	var deptList = [
+	                { 'deptId' : 100,
+	   			      'deptName':'총무부',
+	   			      'locationId' : 1000}
+	                ,
+	                { 'deptId' : 200,
+		   			  'deptName':'인사과',
+		   			  'locationId' : 1000}
+	                , 
+	                  { 'deptId' : 300,
+		   			    'deptName':'기업지원실',
+		   			    'locationId' : 2000}
+	               ] 
+	console.log("두번째부서명: " + deptList[1].deptName );
+	for(i=0; i<deptList.length; i++) {
+		console.log(i + "번째부서명: " + deptList[i].deptName );
+	}
+	// 배열 소팅
+	deptList.sort(function(a,b) { return a.deptName.localeCompare(b.deptName) } );
+	console.log("정렬후: "  );
+	for(i=0; i<deptList.length; i++) {
+		console.log(i + "번째부서명: " + deptList[i].deptName );
+	}
+	
+	// 날짜
+	var f = new Date();    //오늘 날짜
+	var birth = new Date(1980, 12, 1);  // 생일
+	console.log("오늘은 : " + f);
+	console.log("오늘은 : " + f.getTime() );
+	console.log("오늘은 월 일 : " + ( f.getMonth()+1)  + "월" + f.getDate() +"일" );
+	var days = Math.floor( (f-birth)/1000/60/60/24 ) ;
+	console.log("살아온 일수는 : " +  days   );
+</script>
+</head>
+<body>
+<!-- variable.jsp -->
+</body>
+</html>

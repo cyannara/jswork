@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>carRace.html</title>
+    <style>
+        img {
+            position:absolute ;
+        }
+    </style>
+</head>
+<body>
+    <img src="./img/boxer.jpeg">
+    <script>
+        let img = document.getElementsByTagName("img")[0];
+        //  width => 100px, top => 300,  left = 100
+        img.style.width = "100px";
+        img.style.top = "100px";
+        img.style.left = "0px";
+
+        function moveImg(){
+            //현재 좌표에서 100만큼 더 이동
+            let left = img.style.left;   // 0px
+            img.style.left = parseInt(left) + 100 + "px";
+            if( parseInt(left) + 100 >= 500 ) {
+                window.clearInterval(timer1);
+            }
+        }
+
+        let timer1 = window.setInterval(moveImg, 1000);
+    </script>
+</body>
+</html>

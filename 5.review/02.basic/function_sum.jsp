@@ -1,0 +1,56 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>function.jsp</title>
+<script>
+	//두수의 합을 계산
+	function sum(num1,num2){
+		if ( num2 == undefined )
+			num2 = 0;
+		
+		var result = num1 + num2;
+		return result;
+	}
+	
+	//이벤트 핸들러 (이벤트처리함수)
+	function calSum() {
+		//id가 n1, n2 인 텍스트필드의 값을 합해서 div 태그에 출력
+		var n1 = document.getElementById("n1").value;
+		var n2 = document.getElementById("n2").value;
+		//value,  innerHTML
+		document.getElementById("divResult").innerHTML = parseInt(n1) + Number(n2);
+	}
+	
+	function changeColor() {
+		//텍스트필드의 배경색 변경
+		document.getElementById("n1").style.backgroundColor = "yellow";
+	}
+	function changeColor2() {
+		//텍스트필드의 배경색 변경
+		document.getElementById("n1").style.backgroundColor = "white";
+	}	
+	function printValue() {
+		//텍스트필드값을 컨솔창에 출력
+		console.log(document.getElementById("n1").value);
+	}
+	
+	//onload 이벤트
+	window.onload = function() {
+		document.getElementById("n1").value = 50;
+	}
+</script>
+</head>
+<body>
+	<input type="text" id="n1" 
+	       onmouseover="changeColor();" 
+	       onmouseout="changeColor2();"
+	       onchange="printValue();"/> +
+	<input type="text" id="n2" value="30"/> = 
+	<input type="button" id="cal" onclick="calSum();"/>
+	<div id="divResult">    </div>
+
+</body>
+</html>
+

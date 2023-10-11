@@ -1,0 +1,76 @@
+<style>
+    a {text-decoration:none;color:#333;}
+    ul {list-style:none;}
+    ul.zoom_btn li {display:inline-block;border:1px solid #ccc;text-align:center;}
+    ul.zoom_btn li a {display:block;width:40px;height:40px;line-height:40px;}
+ 
+    p { position: absolute ; right:0; top: 80px; display: inline-block; width: 300px;}
+    div { height: 500px; border: 1px solid blue;}
+</style>
+ 
+<header>
+    <ul class="zoom_btn">
+        <li><a href="javascript:;" id="zoomOut">-</a></li>
+        <li><a href="javascript:;" id="zoomInit">기본</a></li>
+        <li><a href="javascript:;" id="zoomIn">+</a></li>
+    </ul>
+</header>
+<!--//header-->
+ 
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis delectus, libero porro. Voluptate autem mollitia delectus. Voluptate consectetur, provident nam, facilis ea mollitia rerum animi pariatur illo suscipit, eos autem!</p>
+ <div >1</div>
+ <div >2</div>
+ <div >3</div>
+ <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+ <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script type="text/javascript"> 
+ 
+var zoomsVal = 100;
+var zoomsInterval = 10;
+var zoomsInit = document.getElementById("zoomInit");
+var zoomsIn = document.getElementById("zoomIn");
+var zoomsOut = document.getElementById("zoomOut");
+    
+zoomsInit.addEventListener("click", zoomInit);
+zoomsIn.addEventListener("click", zoomIn);
+zoomsOut.addEventListener("click", zoomOut);
+ 
+    function zoomInit(){ 
+ 
+        zoomsVal = 100;
+        zoomCalc();
+        //console.log("zoom init");
+ 
+    }
+ 
+    function zoomCalc(){
+ 
+        document.body.style.zoom = zoomsVal + '%';
+ 
+    }
+ 
+    function zoomIn() { 
+ 
+        zoomsVal += zoomsInterval;
+        zoomCalc();
+        //console.log("zoom In");
+ 
+    }
+ 
+    function zoomOut() { 
+ 
+        zoomsVal -= zoomsInterval;
+        zoomCalc();
+        //console.log("zoom out");
+ 
+    }    
+ 
+window.addEventListener("scroll", function(){
+    var scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
+    scrollTop = scrollTop;
+    //document.querySelector("p").style.top = scrollTop + 200 +'px'
+    //document.querySelector("p").style.top = scrollTop + (140-zoomsVal)* 200/100 +'px'
+    var offset = scrollTop + (140-zoomsVal)* 200/100;
+    $('p').stop().animate( { top : offset } , 1000); 
+}, false)
+</script> 

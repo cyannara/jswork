@@ -1,0 +1,3 @@
+let uuid = self.crypto.randomUUID();
+   error : randomUUID is not a function
+   resson : Secure context: This feature is available only in secure contexts (HTTPS), in some or all supporting browsers.

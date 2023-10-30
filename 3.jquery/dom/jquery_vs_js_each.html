@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>
+    <title>Document</title>
+</head>
+<body>
+    <div>사과</div>
+    <div>바나나</div>
+    <div>포도</div>
+    <div>워터메론</div>
+    <div>키위</div>
+    <script>
+        console.log("jquery each break 작동함");
+        $("div").each(function( index, node ) {
+            if(node.textContent.length > 2 ) {
+                return false  // break
+            }                 
+            console.log(node.textContent)
+        })
+
+        console.log("js forEach break 안됨");
+        let arr = [... document.querySelectorAll("div")]
+
+        arr.forEach(function(node, index, array){
+            if(node.textContent.length > 2 ) {
+                return true  // continue만 됨
+            }                 
+            console.log(node.textContent)
+        })
+
+        console.log("js some break 작동함");
+        arr.some(function(node, index, array){
+            if(node.textContent.length > 2 ) {
+                return true  // break
+            }                 
+            console.log(node.textContent)
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> fetch test </h3>
+    <script>
+     function todoSelect(){   
+        fetch("http://localhost/prj/todoSelect")
+        .then(response => response.json() )
+        .then(data=>{
+            console.table(data);
+        });
+     }
+     //todoSelect()
+     function todoInsert(){   
+        fetch("http://localhost/prj/todoInsert",{
+            method : 'post',
+            headers :{'Content-Type': 'application/x-www-form-urlencoded'},
+            body : 'contents=fecthtest...'
+        })
+        .then(response => response.json() )
+        .then(data=>{
+            console.table(data);
+        });
+     }
+     //todoInsert();
+     function todoUpdate(){
+        fetch("http://localhost/prj/todoUpdate",{
+            method : 'post',
+            headers :{'Content-Type': 'application/x-www-form-urlencoded'},
+            body : 'no=1&todoyn=1'   //no, todoyn
+        })
+        .then(response => response.json() )
+        .then(data=>{
+            console.table(data);
+        });
+     }
+     todoUpdate();
+    </script>
+</body>
+</html>

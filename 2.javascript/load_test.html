@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="btnLoad">로드</button>
+    <div id="result"></div>
+
+    <script>
+        $("#btnLoad").on("click", function(){
+            $("#result").load("load_view.html");
+        })
+    </script>
+</body>
+</html>

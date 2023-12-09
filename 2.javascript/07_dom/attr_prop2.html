@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>어트리뷰트와 프로퍼티 차이점</h3>
+    <input  id="txtName" size="20" type="text"  mygrp="g01"   value="1111" class="form-field" data-id="u01" >
+    <script>
+        // html 표준 속성( size, type, alt, data...) : html attribute와 dom property는 서로 공유함
+        console.log("표준속성  size===");
+
+        txtName.setAttribute("size",60);                // html 태그 attribute
+        console.log( txtName.size )  
+
+        txtName.size = 40;                              // dom property
+        console.log( txtName.getAttribute("size") )     
+
+        console.log("표준속성  data ===");
+        console.log(txtName.getAttribute('data-id'))
+        console.log(txtName.dataset.id)
+        console.log(txtName.dataset['id'])
+        //console.log(txtName.data-id)
+        txtName.dataset['id'] = 'u02'
+        txtName.dataset['addr'] = '대구'
+
+        // html 커스텀 속성 (사용자 정의 속성(=비표준속성))  : 서로 공유 안함
+        console.log("커스텀 속성 ===");
+
+        txtName.setAttribute("mygrp","g03")             
+        txtName.mygrp = "g02"                            // dom property
+        console.log( txtName.getAttribute("mygrp") )     // html 태그 attribute
+        console.log( txtName.mygrp) 
+
+        // 예외 속성들(value, class)
+        console.log("에외속성 속성 value ====");
+        txtName.value="kim";
+        console.log( txtName.getAttribute("value") )     // html 태그 attribute
+        console.log( txtName.value) 
+        txtName.setAttribute("value",'park')
+
+        console.log("에외속성 속성 value ====");
+        txtName.className = "big"    //   속성이 class가 아님
+        txtName.classList.add("blue")
+
+        // dom 프로퍼티 속성값 = 객체,      태그 attribute = 문자
+        txtName.setAttribute("attr1","string");
+        txtName.setAttribute("attr2",{id:1, name:'kim'});
+        console.log ( txtName.getAttribute("attr2").name );
+
+        txtName.prop1 = "object"
+        txtName.prop2 = {id:1, name:'kim'}
+        console.log(txtName.prop2.name)
+    </script>
+</body>
+</html>

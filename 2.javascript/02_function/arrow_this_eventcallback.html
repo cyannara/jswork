@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="myButtonArrow" type="button">이벤트콜백</button>
+    <button id="myButtonFunction" type="button">이벤트콜백</button>
+    <script>
+    const button1 = document.getElementById('myButtonArrow');
+    const button2 = document.getElementById('myButtonFunction');
+
+    button1.addEventListener('click', () => {
+    console.log(this);	// Window
+    this.innerHTML = 'clicked';
+    });
+
+    button2.addEventListener('click', function() {
+    console.log(this);	// button 엘리먼트
+    this.innerHTML = 'clicked';
+    });
+    </script>
+</body>
+</html>

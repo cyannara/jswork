@@ -27,6 +27,7 @@
         ],
     });
 
+    //데이터 fetch해서 reset
     fetch("data.json")
     .then(res=>res.json())
     .then(res=>{tabledata = res; table.setData(res);})
@@ -35,6 +36,10 @@
     table.on("rowClick", function(e, row){ 
         alert("Row " + row.getData().id + " Clicked!!!!");
     });
+
+    // 그리드 데이터 업데이트    
+    tabledata[0].name = 'test'
+    table.updateData([{id:2, name:'chichi'}])
     </script>
 </body>
 </html>

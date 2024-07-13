@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="./css/rollover.css" />
+<script src="../scripts/jquery-1.10.2.js"></script>
+<script src="./scripts/rollover.js"></script>
+<script>
+/*-------------------------
+ *  load : post html
+ ------------------------- */
+$(function(){
+
+	$(".menu").on("click", "a", function(){	
+		var url = $(this).find("img").attr("alt") +".html";
+		$(".content").load(url);
+	});
+	
+});
+
+</script>
+</head>
+<body>
+	<div class="header">
+		<ul class="menu">
+			<li><a href="#" class="rollover menuitem"><img src="./images/menu01_off.png" alt="panel_Home" /></a></li>
+			<li><a href="#" class="rollover menuitem"><img src="./images/menu02_off.png" alt="panel_Products" /></a></li>
+			<li><a href="#" class="rollover menuitem"><img src="./images/menu03_off.png" alt="panel_Company" /></a></li>
+			<li><a href="#" class="menuitem"><img src="" alt="boardlist" /></a></li>
+		</ul>
+	</div>
+	<div class="content"></div>
+</body>
+</html>

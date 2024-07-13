@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<employees>
+	<employee>
+		<first_name>홍길동</first_name>
+		<dept>총무</dept>
+		<addr id="home">대구시 중구</addr>
+		<addr id="office">대구시 북구</addr>
+	</employee>
+	<employee>
+		<first_name>을지문덕</first_name>
+		<dept>인사</dept>
+		<addr id="home">서울시 서대문구</addr>
+		<addr id="office">서울시 용산구</addr>		
+	</employee>
+	<employee>
+		<first_name>김유신</first_name>
+		<dept>개발</dept>
+	</employee>
+</employees>

@@ -1,0 +1,6 @@
+	<form name="frm" id="frm" >
+		<input type="text" name="userid" id="userid">
+		    <span id="result"></span><br/>
+		<input type="text" name="userpw" id="userpw">
+		<button id="btnLogin">·Î±×ÀÎ</button>
+	</form>

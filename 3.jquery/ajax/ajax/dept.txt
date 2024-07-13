@@ -1,0 +1,22 @@
+		//등록버튼
+		$("#btnIns").click(function(){
+			// 파라미터 -> 쿼리문자열 만들기
+			var params = $("#insFrm").serialize();
+			// 등록 ajax 요청
+			$.post("../DeptInsertServ.do", params, function(data,status){
+				var jData = eval("(" + data +")");  //json으로 변환
+				if(status == "success") {
+					if( jData.length == 1) {
+						alert("등록완료");
+						var div =  "<div id='"+jData[0].departmentId+"'>" + 
+					      "<span>" +jData[0].departmentId +"</span>" +
+					      "<span>" + jData[0].departmentName +"</span>" +
+					      "</div>"
+						$(div).prependTo("#deptList");
+					} else {
+						alert("등록에러");
+					}
+				} 
+			});
+			return false;    //event.preventDefault()
+		});

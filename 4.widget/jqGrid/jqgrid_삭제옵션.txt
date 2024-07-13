@@ -1,0 +1,4 @@
+{serializeDelData: function(postdata) {
+						            return JSON.stringify({employee_id: postdata.id});
+						        } 
+    						}

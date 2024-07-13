@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head><title>timer_imageSliser.jsp</title>
+<script>
+var arrImage =  ["images/Chrysanthemum.jpg",     "images/Desert.jpg",
+                 "images/Hydrangeas.jpg",        "images/Jellyfish.jpg",
+                 "images/Koala.jpg",             "images/Lighthouse.jpg",
+                 "images/Penguins.jpg",          "images/Tulips.jpg"]; 
+                 
+var pos = 0 ; // 이미지 위치 인덱스  
+function init(){
+	document.getElementById("slider").src= "./"+arrImage[0];
+}
+function moveNext(){
+	//pos 증가
+	pos ++;
+	// pos 체크  (이미지 크기보다 크다면 다시 0으로 reset)
+	if (pos >= arrImage.length )
+		pos = arrImage.length-1;
+	//이미지 변경
+	document.getElementById("slider").src= "../"+arrImage[pos];
+}
+
+function movePre(){
+	//pos 증가
+	pos --;
+	// pos 체크  (이미지 크기보다 크다면 다시 0으로 reset)
+	if (pos < 0 )
+		pos = 0;
+	//이미지 변경
+	document.getElementById("slider").src= "../"+arrImage[pos];
+}
+</script>
+</head>
+<body onload="init();">
+<!-- imageSlider.jsp -->
+이미지 슬라이더 <hr>
+<img id="slider" src="" 
+    style="width: 200px;height: 200px; position: relative; left: 100px;"><br>
+<input type="button" value="◀" onclick="moveNext()"/> 
+<input type="button" value="▶" onclick="movePre()"/>
+</body>
+</html>

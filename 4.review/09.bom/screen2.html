@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head><title>bomTest.jsp</title>
+<script>
+	function init() {
+		//해상도
+		document.getElementById("demo1").innerHTML = screen.width +" * " +
+		 											 screen.height;
+
+		//브라우저
+		document.getElementById("demo2").innerHTML =
+			 							   navigator.appName +":" 
+			                             + navigator.platform +":" 
+			                             + navigator.appCodeName +":"
+			                             + navigator.userAgent +":";
+	}
+</script>
+
+</head>
+<body onload="init()">
+<h3>해상도와 브라우저 </h3>
+
+현재 해상도는<span id="demo1"></span> 입니다.<br>
+현재 브라우저는<div id="demo2"></div> 입니다. 
+
+<input type="button" value="이전페이지로" 
+       onclick="history.go(-1)"/>   
+</body>
+</html>
+
+
+
+

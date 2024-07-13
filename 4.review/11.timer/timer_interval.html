@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>타이머-반복실행</title>
+<script>
+	function timer_start() {
+		var cur_time = new Date();
+		document.getElementById("result").innerHTML = 
+			cur_time.toLocaleTimeString();
+	}
+	var timer1 = setInterval(timer_start, 1000);
+</script>
+</head>
+<body>
+<!-- timer_interval.jsp -->
+현재시간은 <span id="result"></span>
+<button onclick="clearInterval(timer1)">중지</button>
+</body>
+</html>

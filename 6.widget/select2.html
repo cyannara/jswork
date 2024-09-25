@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  </head>
+  <body>
+    <select
+      id="mySelect2"
+      class="js-example-basic-multiple"
+      name="states[]"
+      multiple="multiple"
+    >
+      <option value="AL" data-code="Aa" data-name="name1">Alabama</option>
+      <option value="AL" data-code="b" data-name="name1">ddd</option>
+      <option value="AL" data-code="c" data-name="name1">ddd</option>
+      <option value="WY" data-code="d">Wyoming</option>
+    </select>
+    <script>
+      $("#mySelect2").select2({
+        // ...
+        templateSelection: function (data, container) {
+          // Add custom attributes to the <option> tag for the selected option
+          $(data.element).attr("data-custom-attribute", data.id);
+          return data.text;
+        },
+      });
+
+      // Retrieve custom attribute value of the first selected element
+      $("#mySelect2").find(":selected").data("custom-attribute");
+    </script>
+  </body>
+</html>

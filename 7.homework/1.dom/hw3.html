@@ -28,13 +28,13 @@
         let option = document.querySelectorAll("#subject option:checked");
         
         // console.log(option.length);
-        // 하나라도 option(Array)에 값이 없으면 걸리겠죠?
+        // 하나라도 선택된 option(Array)에 값이 없으면 alert 메시지 출력하고 중단
         if(option.length === 0) {
           alert("선택 한 과목이 없습니다.");
           return;
         }
 
-        // 하나라도 option(Array)에 값이 있으면 if가 안걸리고 여기로 고스란히 오심
+        // 하나라도 option(Array)에 값이 있으면 선택된 항목의 값을 출력
         let text_array = [];
         for(let i = 0; i < option.length; i++) {
           text_array.push(option[i].value);
@@ -43,8 +43,7 @@
         document.getElementById("result").innerHTML = `
           선택과목 수 : ${text_array.length}
           <br>
-          선택과목 : ${text_array.join(", ")}
-        `;
+          선택과목 : ${text_array.join(", ")}     `;
       });
     });
   </script>

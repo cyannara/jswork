@@ -1,0 +1,13 @@
+오늘 수업내용
+===============================
+array - filter, map, sort
+for
+이벤트(직접, 그룹)
+fetch
+
+
+과제
+===============================
+1. 분양 -> jquery 함수로 변환
+2. phothos -> fetch ->  태그 만들어서 출력(12개)
+   url : https://jsonplaceholder.typicode.com/photos

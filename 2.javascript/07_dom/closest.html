@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>closest.html</title>
+</head>
+<body>
+  <table>
+    <tr data-goodsid="g1">
+      <td>1</td><td>2</td><td><button type="button" class="btnAdd">추가</button></td>
+    </tr>
+    <tr data-goodsid="g2">
+      <td>4</td><td>5</td><td><button type="button" class="btnAdd">추가</button></td>
+    </tr>
+    <tr data-goodsid="g3">
+      <td>7</td><td>8</td><td><button type="button" class="btnAdd">추가</button></td>
+    </tr>
+  </table>
+  <script>
+    //document.querySelector(".btnAdd").closest("tr").firstElementChild.innerText
+    //버튼 클릭하면 tr의 data 속성 읽기
+    //document.querySelector(".btnAdd").closest("tr").dataset
+    let btnAdds = document.querySelectorAll(".btnAdd");
+    // for(btn of btnAdds){
+    //   btn.addEventListener("click",function(e){
+    //     console.log(this)
+    //     let goodsid = event.target.closest("tr").dataset.goodsid;
+    //     console.log(goodsid);
+    //     //e.target || window.event.target
+    //   })
+    // }
+    
+    //그룹이벤트 table
+    //event.target.classList.contains("btnAdd")
+    document.querySelector("table").addEventListener("click", function(){
+      if(event.target.classList.contains("btnAdd")) {
+        let goodsid = event.target.closest("tr").dataset.goodsid;
+        console.log(goodsid);
+      }
+    })
+
+  </script>
+</body>
+</html>

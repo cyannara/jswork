@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eventDelegate.html</title>
+</head>
+<body>
+  <input id="txtWord">
+  <button type="button" id="btnAdd">추가</button>
+  <p class="word">list</p>
+  <p class="word">nice</p>
+  <p class="word">good</p>
+  <p class="word">very</p>
+  <p class="word">바나나</p>
+  <script>
+    //버튼클릭 이벤트 : 인풋태그의 입력값으로 p 태그 
+    //만들어서 바디에 추가
+    //vaule, insertAdjacentHTML()
+    let btn = document.querySelector("#btnAdd");
+    btn.addEventListener("click", function(){
+      let txt = document.querySelector("#txtWord");
+      let newTag = `<p class="word">${txt.value}</p>`;
+      document.body.insertAdjacentHTML("beforeend", newTag)
+      txt.value ="";
+    })
+
+    // .word 태그에 마우스오버 이벤트 -> 배경색 변경
+    //태그.style.속성 = 'xxx'
+
+    //직접 이벤트
+    // let words = document.querySelectorAll(".word");
+    // for(let word of words){
+    //   word.addEventListener("mouseenter",function(e){
+    //     event.target.style.backgroundColor = 'yellowgreen';
+    //   })
+    // }
+
+    //그룹(=위임)이벤트 :  부모태그에 이벤트 지정(이벤트 전파)
+    document.body.addEventListener("mouseover", function(){
+      if (event.target.tagName == 'P') {  //event.target.classList.contains("word")
+        event.target.style.backgroundColor = 'yellowgreen';
+      }
+    })
+  </script>
+</body>
+</html>

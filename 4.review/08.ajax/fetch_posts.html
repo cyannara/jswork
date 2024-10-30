@@ -14,15 +14,18 @@
     function loadDoc() {      
         const url = "https://jsonplaceholder.typicode.com/posts"; //2. 서버 URL
         fetch(url)
-        .then(res => res.json())
+        .then(res => res.json() )    //비동기.  서버 응답이 오면 콜백
         .then(obj => {
-            for(t of obj)
-            list.innerHTML += `<tr>
+            for(t of obj) {
+                list.innerHTML += `<tr>
                                 <td>${t.id}</td>
                                 <td>${t.title}</td>
                                 <td>${t.userId}</td>
                             </tr>`
-        })
+            }
+            console.log("fetch end");
+        });
+        console.log("end");
     }
 </script>
 </head>

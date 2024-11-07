@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let nationWidth = {
+      'korea' : 220877,
+      'Rusia' : 17098242,
+      'france' : 543965,
+      'Japan' : 377915,
+      'england' : 242900
+    }
+
+    let gap = Number.MAX_SAFE_INTEGER;
+    let nation ;
+    let base = nationWidth['korea'];
+
+    for( k in nationWidth) {
+      if ( k == 'korea') {
+        continue
+      }
+      if( Math.abs(base - nationWidth[k]) < gap ) {
+        gap = Math.abs(base - nationWidth[k])
+        nation = k;
+      }
+    }
+    console.log(nation, nationWidth[nation], gap)
+  </script>
+</body>
+</html>

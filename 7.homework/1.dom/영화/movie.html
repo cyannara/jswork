@@ -57,13 +57,12 @@
   <script>
 
     movieRank.forEach(item => {
-      let node = `<tr><td>${item.rank}</td><td class="movieCd">${item.movieCd}</td><td>${item.movieNm}</td><td>${item.openDt}</td></tr>`
+      let node = `<tr><td>${item.rank}</td><td class="movieCd" onclick="movieinfoHandler()">${item.movieCd}</td><td>${item.movieNm}</td><td>${item.openDt}</td></tr>`
       list.insertAdjacentHTML("beforeend", node);
     })
 
-    Array.from(document.querySelectorAll(".movieCd")).forEach(item=>{
-      item.addEventListener("click", e=>{
-        let movieCd = e.target.innerText;
+    function movieinfoHandler(){
+        let movieCd = event.target.innerText;
         let act = movieInfo[movieCd].actors.map(actor=> actor.peopleNm)
         let direc = movieInfo[movieCd].actors.map(director=> director.peopleNm)
         txtMovieCd.value = movieCd;
@@ -71,9 +70,8 @@
         openDt.value = movieInfo[movieCd].openDt;
         directors.value = direc.join(",");
         actors.value = act.join("\n");
-      })
+      }
 
-    })
   </script>
 </body>
 </html>

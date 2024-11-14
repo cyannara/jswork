@@ -4,9 +4,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://uicdn.toast.com/tui.pagination/latest/tui-pagination.css" />
+  <script src="https://uicdn.toast.com/tui.pagination/latest/tui-pagination.js"></script>
   <link rel="stylesheet" href="https://uicdn.toast.com/grid/latest/tui-grid.css" />
   <script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
   <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
+
   <title>Document</title>
 </head>
 <body>
@@ -16,7 +19,7 @@
   <button type="button" id="btnExcel">엑셀</button>
   
   <div id="grid"></div>
-  
+  <div id="pagination" class="tui-pagination"></div>
   <script src="basic-dummy.js"></script>
   <script>
     //const gridData = []  //basic-dummy.js에 선언되어 있음
@@ -100,6 +103,11 @@
       el: document.getElementById('grid'),
       scrollX: false,
       scrollY: false,
+      rowHeaders: ['rowNum'],
+      pageOptions: {
+        useClient: true,
+        perPage: 5
+      },
       columns: [
         {
           header: 'Name',

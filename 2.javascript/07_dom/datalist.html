@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <h1>The datalist element</h1>
+
+  <form action="/action_page.php" method="get">
+    <div>
+      <label for="username">username:</label>
+      <input name="username" id="username">
+    </div>
+    <div>
+
+      <label for="browser">Choose your browser from the list:</label>
+      <input list="browsers" name="browser" id="browser">
+      <input  name="browsercode" id="browsercode">
+      <datalist id="browsers">
+        <option value="Edge" data-id="e">
+        <option value="Firefox"  data-id="f">
+        <option value="Chrome"  data-id="c">
+        <option value="Opera"  data-id="o">
+        <option value="Safari"  data-id="s">
+      </datalist>
+    </div>
+    <input type="submit">
+  </form>
+
+  <p><strong>Note:</strong> The datalist tag is not supported in Safari 12.0 (or earlier).</p>
+  <script>
+    let browser = document.querySelector("#browser")
+    let browsercode =  document.querySelector("#browsercode")
+    let browsers = document.querySelector("#browsers");
+
+    browser.addEventListener("change", function(){
+      let sel = this.value;
+      let result = Array.from(browsers.options).find(ele =>(ele.value == sel));
+      if( result ) 
+        browsercode.value = result.dataset.id
+      else {
+        this.value = '';
+        browsercode.value = '';
+        this.focus();
+        alert('회사 선택')
+      }
+    })
+  </script>
+</body>
+
+</html>

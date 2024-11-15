@@ -13,23 +13,24 @@
 
     <script>
         btnAdd.addEventListener("click", function(){
-            const p = document.createElement("p");
-            p.classList.add("word")
-            p.innerHTML = txtWord.value;
-            document.body.append(p);
+            //const p = document.createElement("p");
+            //p.classList.add("word")
+            //p.innerHTML = txtWord.value;
+            //document.body.append(p);
+            document.body.insertAdjacentHTML('beforeend',`<p class="word">${txtWord.value}</p>`);
         })
 
         //이벤트 위임(그룹이벤트)
         document.body.addEventListener("click", function(){
             if(event.target.tagName == 'P') {
-            //if(event.target.className == "word") {
+            if(event.target.className == "word") {
             //if(event.target.classList.contains("word")) {
                 console.log(event.target.innerHTML);
             }
 
-            console.log("this", this);
-            console.log("target", event.target);
-            console.log("currentTarget", event.currentTarget);
+            //console.log("this", this);
+            //console.log("target", event.target);
+            //console.log("currentTarget", event.currentTarget);
         })
     </script>
 </body>

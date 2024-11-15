@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="dist/themes/default/style.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+  <script src="jstree.min.js"></script>
+</head>
+
+<body>
+  <button type="button" id="btn">등록</button>
+  <button type="button" id="btnSelect">선택</button>
+  <button type="button" id="btnDelete">삭제</button>
+  <div id="event_result"></div>
+  <div id="jstree"></div>
+  <div id="broswer"></div>
+  <script>
+    let mytree = $('#jstree').jstree({
+      'core': {
+        state: {
+            opened: true
+          },
+        "multiple": false,
+        //  'data' :{ url: "jstree.json"}
+        data: [{
+            "id": "ajson1",
+            "parent": "#",
+            "text": "Simple root node"
+          },
+          {
+            "id": "ajson2",
+            "parent": "#",
+            "text": "Root node 2"
+          },
+          {
+            "id": "ajson3",
+            "parent": "ajson2",
+            "text": "Child 1"
+          },
+          {
+            "id": "ajson4",
+            "parent": "ajson2",
+            "text": "Child 2"
+          },
+        ],
+        check_callback : true
+      }
+    });
+
+
+    $("#browser").jstree({
+      core: {
+        data: [{
+          text: "node",
+          children: ["1", "2"],
+          state: {
+            opened: true
+          }
+        }],
+        check_callback: true
+      }
+    }).on("select_node.jstree", function () {
+      var nodeID = $("#browser").jstree(true).get_selected()[0];
+      var children = $("#browser").jstree(true).get_node(nodeID)//.children;
+      $("#browser").jstree(true).delete_node(children);
+    })
+
+    //삭제
+    $("#btnDelete").on("click", function () {
+      var nodeID = $("#jstree").jstree(true).get_selected()[0];
+      var children = $("#jstree").jstree(true).get_node(nodeID)//.children;
+      $("#jstree").jstree(true).delete_node(children);
+    })
+
+    //선택
+    $("#btnSelect").on("click", function () {
+      $.jstree.reference('#jstree').select_node('ajson1');
+    })
+
+    //추가
+    $("#btn").on("click", function () {
+      var node = {
+        "id": "ajson5",
+        "parent": "ajson2",
+        "text": "Child 3"
+      }
+       $.jstree.reference('#jstree').create_node("#ajson2", node, "last", function (new_node) {
+        console.log(new_node)
+      });
+    })
+
+    $('#jstree')
+      // listen for event
+      .on('changed.jstree', function (e, data) {
+        var i, j, r = [];
+        for (i = 0, j = data.selected.length; i < j; i++) {
+          r.push(data.instance.get_node(data.selected[i]).text);
+        }
+        $('#event_result').html('Selected: ' + r.join(', '));
+      })
+  </script>
+</body>
+
+</html>

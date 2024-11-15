@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="copy_div">
+    <p style="background-color:#AAA;">복사할 영역</p>
+  </div>
+
+  <button type="button" id="copy">복사</button>
+
+  <script>
+    const sendScreenshot = (img) => {
+      let data = new FormData();
+      data.append('screenshot', img);
+      fetch('/api/upload', {
+        method: "post",
+        body: data
+      })
+    }
+
+    document.querySelector("#copy").addEventListener("click", function () {
+
+      const input = document.getElementById('copy_div');
+      html2canvas(input).then(canvas => {
+        //document.body.appendChild(canvas);
+        const imgData = canvas.toDataURL('image/png');
+        sendScreenshot(imgData)
+      })
+    });
+  </script>
+</body>
+
+</html>

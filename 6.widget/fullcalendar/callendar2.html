@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+    <script>
+var calendar;
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth',
+          events: []
+        });
+        calendar.render();
+      });
+      
+  window.setTimeout(loadEvent, 400)   //calendar randering 시간이 있어서 지연 ajax 호출을 지연시킴
+
+  function loadEvent(){
+    fetch("event.json")
+    .then((res) => res.json())
+    .then(res => calendar.addEventSource( res ))   //addEventSource( Array/URL/Function   )
+  }
+    </script>
+  </head>
+  <body>
+    <div id='calendar'></div>
+  </body>
+</html>

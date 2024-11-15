@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let nationWidth = {
+      'korea': 220877,
+      'Rusia': 17098242,
+      'france': 543965,
+      'Japan': 377915,
+      'england': 242900
+    }
+    let gap = Number.MAX_SAFE_INTEGER;
+    let w = nationWidth['korea']
+
+    // Object.entries는 object를 인자로 받아 [key, value] 형태의 배열을 값으로 갖는 2차원 배열을 반환한다
+    let nationArr = Object.entries(nationWidth);
+    nationArr.splice(0,1);
+
+    let item;
+    for( entry of nationArr ) {
+      const diff = Math.abs(entry[1] - w);
+      if( diff < gap) {
+        gap = diff;
+        item = entry;
+      }
+    }
+
+    console.log(item[0], gap)
+    // const arr = [5, 1, 4, 2, 3,10];
+    // const gap1 = arr.reduce(
+    //   (accumulator, currentValue) => Math.min(accumulator, Math.abs(currentValue- minvalue ))
+    // );
+
+    // let gap2 = Math.max.apply(null, arr);
+
+    // console.log(gap1, gap2)
+    // // 
+    // // const max = arr.reduce((a, b) => Math.max(a, b), -Infinity);
+
+   
+  </script>
+</body>
+
+</html>

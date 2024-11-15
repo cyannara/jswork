@@ -5,13 +5,14 @@
 <title>debugTest.jsp</title>
 <script>
 function sum() {
-	var a= 10;
-	var b= 10;
+	var a = 10;
+	b = '10';
 	var c = subSum(a,b);
 	console.log(c);
 }
 function subSum(x,y){
-	return x+y;
+	let result = x+y;
+	return result;
 }
 function checkPopup(){
 	localStorage.setItem("popyn","no");
@@ -21,5 +22,14 @@ function checkPopup(){
 <body>
 디버그 테스트
 <button type="button" onclick="sum()">합계</button>
+<button type="button" id="btntotal">ajax fetch</button>
+<script>
+	document.querySelector("#btntotal").addEventListener("click", function(){
+		fetch('https://jsonplaceholder.typicode.com/todos/1')
+		.then(response => response.json())
+		.then(json => console.log(json))
+	})
+
+</script>
 </body>
 </html>

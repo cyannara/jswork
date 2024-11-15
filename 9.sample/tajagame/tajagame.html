@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>예담직업전문학교</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    #canvas {
+      height: 400px;
+    }
+
+    #line {
+      border: 3px solid black;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Oswald"
+    }
+
+    body {
+      font-family: "Open Sans"
+    }
+  </style>
+</head>
+
+<body class="w3-light-grey">
+
+  <!-- Navigation bar with social media icons -->
+  <div class="w3-bar w3-black w3-hide-small">
+    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-facebook-official"></i></a>
+    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-instagram"></i></a>
+    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-snapchat"></i></a>
+    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-flickr"></i></a>
+    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-twitter"></i></a>
+    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-linkedin"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-right"><i class="fa fa-search"></i></a>
+  </div>
+
+  <div class="w3-content" style="max-width:1600px;">
+
+    <!-- Header -->
+    <header class="w3-container w3-center w3-padding w3-white">
+      <h2 class="w3-xxlarge"><b>IT 타자게임</b></h2>
+      스테이지
+      <select id="selStage">
+        <option value="0" selected>Javascript</option>
+        <option value="1">Java</option>
+        <option value="2">Java API</option>
+      </select>&nbsp;&nbsp;&nbsp;&nbsp;
+      속도
+      <select id="selLevel">
+        <option value="1" selected>레벨1</option>
+        <option value="2">레벨2</option>
+        <option value="3">레벨3</option>
+        <option value="4">레벨4</option>
+        <option value="5">레벨5</option>
+      </select> &nbsp;&nbsp;&nbsp;&nbsp;
+      하트
+      <select id="selHeart">
+        <option value="3" selected>3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>&nbsp;&nbsp;&nbsp;
+      <button type="button" id="btnStart" class="w3-black">게임시작</button>
+    </header>
+
+    <!-- Grid -->
+    <div class="w3-row  w3-border">
+
+      <!-- Blog entries -->
+      <div class="w3-col l8 s12">
+
+        <!--game panel -->
+        <div class="w3-container w3-white w3-margin w3-padding-large">
+          <div id="canvas"></div>
+          <hr id="line" align="left">
+          <div class="w3-row">
+            <div class="w3-col s8">
+              <input id="text" class="w3-input w3-border" placeholder="text" onkeypress="keydown(event.keyCode)"
+                autofocus="autofocus">
+            </div>
+            <div class="w3-col s4">
+              <button id="auth" class="w3-button w3-black w3-padding-mideum w3-margin-bottom"
+                onclick="keydown(13)">입력</button>
+            </div>
+          </div>
+
+          <div class="w3-row">
+            <div class="w3-col s3">
+              <h4 id="point">획득점수</h4>
+            </div>
+            <div class="w3-col  s9">
+              <h4 id="heart">하트</h4>
+            </div>
+            </h4>
+          </div>
+        </div>
+
+        <!-- tags panel -->
+        <div class="w3-container w3-white w3-margin w3-padding-small">
+
+          <!-- Tags -->
+          <div class="w3-white ">
+            <div class="w3-container w3-padding w3-black">
+              <h4>All keyword</h4>
+            </div>
+            <div class="w3-container w3-white" sytle="min-height:300px">
+              <p id="allKeywords">
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- END tags panel -->
+      </div>
+
+      <!-- About/Information menu -->
+      <div class="w3-col l4">
+        <!-- About Card -->
+        <div class="w3-white w3-margin">
+          <div class="w3-container w3-black w3-padding">
+            <h4><b>예담직업전문학교 ( I T )</b></h4>
+          </div>
+          <div class="w3-padding">자바 & DB 전문교육기관</div>
+        </div>
+
+        <!-- passed keyword panel -->
+        <div class="w3-white w3-margin">
+          <div class="w3-container w3-padding w3-black">
+            <h4>passed keyword</h4>
+          </div>
+          <ul class="w3-ul w3-hoverable w3-white" id="passedKeyword">
+            <!-- <li class="w3-padding-14"><span class="w3-large">&nbsp;</span></li> -->
+            <li class="w3-padding-14">&nbsp;</li>
+            <li class="w3-padding-14">&nbsp;</li>
+            <li class="w3-padding-14">&nbsp;</li>
+            <li class="w3-padding-14">&nbsp;</li>
+            <li class="w3-padding-14">&nbsp;</li>
+            <li class="w3-padding-14">&nbsp;</li>
+            <li class="w3-padding-14">&nbsp;</li>
+            <li class="w3-padding-14">&nbsp;</li>
+            <li class="w3-padding-14">&nbsp;</li>
+            <li class="w3-padding-14">&nbsp;</li>
+            <li class="w3-padding-14">&nbsp;</li>
+            <li class="w3-padding-14">&nbsp;</li>
+            <li class="w3-padding-14">&nbsp;</li>
+            <li class="w3-padding-14">&nbsp;</li>
+            <li class="w3-padding-14">&nbsp;</li>
+          </ul>
+        </div>
+        <!-- END About/Intro Menu -->
+      </div>
+
+      <!-- END GRID -->
+    </div>
+
+    <!-- END w3-content -->
+  </div>
+
+  <!-- Footer -->
+  <footer class="w3-container w3-dark-grey" style="padding:16px">
+  </footer>
+
+  <script src="level1.js"></script>
+  <script src="level2.js"></script>
+  <script src="level3.js"></script>
+
+  <script>
+    const goal = 1000;
+    const speeds = [2000, 1750, 1500, 1250, 1000];
+    const colors = ['black', 'darkblue', 'darkslategray', "navy"];
+    const keywords = [word1, word2, word3];
+    const lastLevel = selLevel.options.length;
+    const lastStage = selStage.options.length - 1;
+
+    var canvasWidth = parseInt(document.querySelector('#canvas').getBoundingClientRect().width) - 100; // 키워드 생성되는 캔버스 가로범위
+    var deadLine = parseInt(document.querySelector('#line').getBoundingClientRect().y) - 48; // 데드라인 세로범위
+    var startX = parseInt(document.querySelector('#canvas').getBoundingClientRect().x);
+    var startY = parseInt(document.querySelector('#canvas').getBoundingClientRect().y);
+
+
+    var game = [];
+    var keyword = [];
+    var level = 1;
+    var currentKeywordSpeed = 2000;
+    var currentDownSpeed = 2;
+
+    var keyword_cnt = 0;
+    var point = 0; // 획득점수
+    var heart = selHeart.value; // 목숨 하트수
+
+    var setInterval1;
+    var setInterval2;
+
+    btnStart.addEventListener("click", init);
+
+
+    window.addEventListener(`resize`, function () {
+      // 키워드 생성되는 캔버스 가로범위
+      canvasWidth = parseInt(document.querySelector('#canvas').getBoundingClientRect().width);
+      startX = parseInt(document.querySelector('#canvas').getBoundingClientRect().x);
+    });
+
+    //게임 초기화
+    function init() {
+      game = [];
+      keyword_cnt = 0
+      point = 0;
+      heart = selHeart.value;
+      canvas.innerHTML = '';
+
+      clearInterval(setInterval1);
+      clearInterval(setInterval2);
+
+      // passedKeyword 클리어
+      Array.from(passedKeyword.children).forEach(item => item.innerHTML = "&nbsp;");
+
+      // 키워드 선택하고 출력
+      keyword = [...keywords[selStage.value]];
+      printKeyword(keyword);
+
+      // 키워드 섞기
+      keyword.sort(() => Math.random() - 0.5);
+
+      //레벨별 스피드 계산
+      level = selLevel.value;
+      currentKeywordSpeed = speeds[level - 1]
+      currentDownSpeed = level * 3;
+
+      //점수 현황판 초기화
+      document.getElementById('point').innerHTML = "획득점수 : " + point
+      document.getElementById('heart').innerHTML = "하트 : " + heart_counter(heart);
+      text.focus();
+
+      // 레벨별 시간차이로 키워드 생성
+      setInterval1 = setInterval(function () {
+        game.push(new keyword_rain());
+      }, currentKeywordSpeed);
+
+      // 키워드 움직이기 
+      setInterval2 = setInterval(function () {
+        for (var x in game) {
+          game[x].move();
+        }
+      }, 250);
+    }
+
+    //다음 스테이지로 변경
+    function nextStage() {
+      if (selStage.value < lastStage) {
+        selStage.value = Number(selStage.value) + 1
+      }
+      selLevel.value = 1;
+      //document.querySelector(".close").click();
+      init();
+    }
+
+    function printKeyword(data) {
+      let element = "";
+      for (word of data) {   // w3-black
+        element += `<span class="w3-tag w3-light-grey w3-small w3-margin-bottom" data-keyword="${word}">${word}</span> `;
+      }
+      allKeywords.innerHTML = element;
+    }
+
+    function heart_counter(heart) {
+      var result = "<font color=red>";
+      for (var x = 0; x < heart; ++x) {
+        result += "♥";
+      }
+      result += "</font>";
+      return result;
+    }
+
+    function gamewin() {
+      clearInterval(setInterval1);
+      clearInterval(setInterval2);
+      if (level == lastLevel) {
+        if (selStage.value < lastStage) {
+          if (confirm("축하드립니다! 다음스테이지 시작할까요?")) {
+
+            nextStage();
+          }
+        } else {
+          alert("모든 게임 클리어!");
+        }
+      } else {
+        var nextlevel = (parseInt(level) + 1);
+
+        if (confirm("축하드립니다! 다음 레벨 시작할까요?")) {
+          selLevel.value = nextlevel;
+          init();
+        }
+      }
+
+    }
+
+    //땅에 닿았거나 클리어된 키워드 노드 제거하고 오른쪽 passwd keyword 패널에 등록
+    function remove_node(pRemoveEle, right) {
+      var vRemove = document.getElementById(pRemoveEle);
+
+      //passed keyword 로 이동
+      var txt = vRemove.innerText;
+      passedKeyword.insertAdjacentHTML('afterbegin', `<li class="w3-padding-14"><span class="w3-large">${txt}</span></li>`);
+      passedKeyword.removeChild(passedKeyword.lastElementChild);
+
+      //노드 제거
+      var vParent = vRemove.parentNode;
+      vParent.removeChild(vRemove);
+      vRemove = null;
+
+      //키워드 목록에서 해당 키워드 색상변경. 클리어한 겅우 검정. 놓친경우 빨강
+      var tag = allKeywords.querySelector(`[data-keyword="${txt}"]`)
+      tag.classList.remove("w3-light-grey")
+      if (right) {
+        tag.classList.add("w3-black")
+      } else {
+        tag.classList.add("w3-red")
+      }
+    }
+
+    function gameover(code) {
+      clearInterval(setInterval1);
+      clearInterval(setInterval2);
+      if (code == 1) {
+        var message = "목숨을 모두 잃었습니다.";
+      } else {
+        var message = "목표 점수를 채우지 못했습니다.";
+      }
+      if (confirm(message + "게임오버. 다시할까요?")) {
+        init();
+      }
+    }
+
+    function random_speed(maxSpeed) {
+      return parseInt(Math.random() * maxSpeed) + 1;
+    }
+
+    function random_width() {
+      return parseInt(Math.random() * canvasWidth) + startX;
+    }
+
+    function keyword_rain() {
+      this.y = startY;
+      this.speed = random_speed(currentDownSpeed);
+      this.node = document.createElement('h2');
+      this.node.className = "keyword";
+      this.node.id = keyword[keyword_cnt];
+      this.node.style.color = colors[keyword_cnt % colors.length];
+      this.node.innerHTML = keyword[keyword_cnt++];
+      if (keyword_cnt >= keyword.length) {
+        clearInterval(setInterval1);
+      }
+      this.node.style.position = 'absolute';
+      this.node.style.left = random_width() + 'px';
+      this.node.style.top = startX + "px";
+      document.getElementById('canvas').appendChild(this.node);
+      console.log()
+      this.move = function () {
+        if (this.y > deadLine) { // 땅에 닿았을 때
+          remove_node(this.node.innerText, false)
+          this.y = startY;
+          this.speed = 0;
+          keyword.splice(keyword.indexOf(this.node.id), 1);
+          keyword_cnt -= 1;
+          heart -= 1;
+          document.getElementById('heart').innerHTML = "목숨 : " + heart_counter(heart);
+          if (heart < 1) gameover(1);
+          if (keyword.length == 0) gameover(2);
+          return;
+        }
+        this.y += this.speed;
+        this.node.style.top = this.y + 'px';
+      }
+    }
+
+    // 키보드 입력 이벤트 핸들러
+    function keydown(keyCode) {
+      if (keyCode == 13) {
+        var text = document.getElementById('text');
+
+        // 입력한 값이 키워드에 있으면 실행   
+        if (keyword.indexOf(text.value) != -1) {
+          remove_node(text.value, true);
+          for (var i in game) {
+            if (game[i]['node'].id == text.value) {
+              game[i]['y'] = 0;
+              game[i]['speed'] = 0;
+            }
+          }
+          keyword.splice(keyword.indexOf(text.value), 1);
+          keyword_cnt -= 1;
+          point += 100;
+          document.getElementById('point').innerHTML = "획득점수 : " + point;
+        }
+        text.value = "";
+        if (point >= goal) {
+          gamewin();
+          return;
+        }
+        if (keyword.length == 0) {
+          gameover(2);
+          return;
+        }
+      }
+      return;
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
+  <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <select id="custom-select-filter-1">
+    <option value="">Please select filter 1...</option>
+    <option value="one">One</option>
+    <option value="two">Two</option>
+    <option value="three">Three</option>
+  </select>
+
+  <select id="custom-select-filter-2" multiple size="4">
+    <option value="">Please select filter 2...</option>
+    <option value="four">Four</option>
+    <option value="five">Five</option>
+    <option value="six">Six</option>
+  </select>
+
+  <table id="myTable" class="display">
+    <thead>
+      <tr>
+        <th>Column 1</th>
+        <th>Column 2</th>
+        <th>Column 3</th>
+        <th>Column 4</th>
+        <th>Column 5</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-testattribute1="one" data-testattribute2="four">
+        <td>1</td>
+        <td>Apples</td>
+        <td>Fruit</td>
+        <td>one</td>
+        <td>four</td>
+      </tr>
+      <tr data-testattribute1="two" data-testattribute2="five">
+        <td>2</td>
+        <td>Oranges</td>
+        <td>Fruit</td>
+        <td>two</td>
+        <td>five</td>
+      </tr>
+      <tr data-testattribute1="one" data-testattribute2="six">
+        <td>3</td>
+        <td>Lexus</td>
+        <td>Cars</td>
+        <td>one</td>
+        <td>six</td>
+      </tr>
+      <tr data-testattribute1="two" data-testattribute2="seven">
+        <td>4</td>
+        <td>Winchester</td>
+        <td>Guns</td>
+        <td>two</td>
+        <td>seven</td>
+      </tr>
+    </tbody>
+  </table>
+  <script>
+    let myTable;
+
+    $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+      var trNode = settings.aoData[dataIndex].nTr;
+      var attr1 = trNode.getAttribute("data-testattribute1");
+      var attr2 = trNode.getAttribute("data-testattribute2");
+
+      var val1 = $('#custom-select-filter-1').val();
+      var val2 = [];
+      $('#custom-select-filter-2 option:selected').each((idx, element) => val2.push(element.value))
+
+      if ((val1 === "" || val1 === attr1) &&
+        (val2.length == 0 || val2.includes(attr2))) {
+        return true;
+      }
+      return false;
+    });    
+    
+    $(document).ready(function () {
+      myTable = $('#myTable').DataTable();
+      
+      // Custom range filtering function
+      // myTable.search.fixed('range', function (searchStr, data, index) {
+      //   var val1 = $('#custom-select-filter-1').val();
+      //   var val2 = [];
+      //   $('#custom-select-filter-2 option:selected').each((idx, element) => val2.push(element.value))
+      //   var major = data[3] || ''; // use data for the age column
+      //   var sub = data[4] || ''; // use data for the age column
+  
+      // if ((val1 === "" || val1 === major) &&
+      //   (val2.length == 0 || val2.includes(sub))) {
+      //   return true;
+      // }
+  
+      //   return false;
+      // });
+
+      $('#custom-select-filter-1').on('change', function () {
+        myTable.draw();
+      });
+
+      $('#custom-select-filter-2').on('change', function () {
+        myTable.draw();
+      });
+
+
+      //search
+      // myTable
+      //   .search('apple', { caseInsensitive: true })
+      //   .draw();
+
+
+      // myTable
+      //   .search(d => {
+      //     console.log(d.includes(''));
+      //     return d.includes('');
+      //   })
+      //   .draw();
+
+      //filter
+      // var filteredData = myTable
+      //   .column(0)
+      //   .data()
+      //   .filter(function (value, index) {
+      //     return value > 2 ? true : false;
+      //   });
+      //console.log(filteredData)
+
+    });
+  </script>
+</body>
+
+</html>

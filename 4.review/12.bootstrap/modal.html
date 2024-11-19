@@ -30,8 +30,8 @@
     <td>title1</td></tr>    
 </table>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">1</button>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">2</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">open</button>
+<button type="button" class="btn btn-primary" id="btnClose">close</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -62,6 +62,12 @@
 </div>
 <script>
 $(function(){
+	//모달 닫기
+	$("#btnClose").on("click", function(){
+		const myModal = new bootstrap.Modal('#exampleModal');
+		myModal.hide();
+	})
+
 	$("#boardList").on("click",".boardInfo", function(event){
 		var modal = $('#exampleModal')	
 		  $.ajax({

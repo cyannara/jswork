@@ -22,7 +22,9 @@
   <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
 
   <script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
-
+  <style>
+    .red { background-color: brown;}
+  </style>
   <title>Document</title>
 </head>
 <body>
@@ -157,15 +159,15 @@
         {
           header: 'Artist',
           name: 'artist',
-          renderer: {
-            type: CustomTextRenderer
-          },
-          editor: {
-            type: CustomTextEditor,
-            options: {
-              maxLength: 10
-            }
-          }
+          // renderer: {
+          //   type: CustomTextRenderer
+          // },
+          // editor: {
+          //   type: CustomTextEditor,
+          //   options: {
+          //     maxLength: 10
+          //   }
+          // }
         },
         {
           header : "time",
@@ -232,12 +234,131 @@
             options: {
               listItems: [
                 { text: 'Yes', value: '1' },
-                { text: 'No', value: '2' }
+                { text: 'No', value: '2' },
+                { text: 'YN', value: '3' }
               ]
             }
           }
         }
-      ]
+      ],  //end of column
+      contextMenu: ({ rowKey, columnName }) => [
+        [
+          {
+            name: 'export',
+            label: 'Export',
+            subMenu: [
+              {
+                name: 'default',
+                label: 'Default',
+                subMenu: [
+                  {
+                    name: 'csvExport',
+                    label: 'CSV export',
+                    action: () => {
+                      grid.export('csv');
+                    },
+                  },
+                  {
+                    name: 'excelExport',
+                    label: 'Excel export(xlsx)',
+                    action: () => {
+                      grid.export('xlsx');
+                    },
+                  },
+                  {
+                    name: 'excelExport',
+                    label: 'Excel export(xls)',
+                    action: () => {
+                      grid.export('xls');
+                    },
+                  },
+                ],
+              },
+              {
+                name: 'includeHeader',
+                label: 'includeHeader: false',
+                subMenu: [
+                  {
+                    name: 'csvExport',
+                    label: 'CSV export',
+                    action: () => {
+                      grid.export('csv', { includeHeader: false });
+                    },
+                  },
+                  {
+                    name: 'excelExport',
+                    label: 'Excel export(xlsx)',
+                    action: () => {
+                      grid.export('xlsx', { includeHeader: false });
+                    },
+                  },
+                  {
+                    name: 'excelExport',
+                    label: 'Excel export(xls)',
+                    action: () => {
+                      grid.export('xls', { includeHeader: false });
+                    },
+                  },
+                ],
+              },
+              {
+                name: 'columnNames',
+                label: `['name', 'artist']`,
+                subMenu: [
+                  {
+                    name: 'csvExport',
+                    label: 'CSV export',
+                    action: () => {
+                      grid.export('csv', { columnNames: ['name', 'artist'] });
+                    },
+                  },
+                  {
+                    name: 'excelExport',
+                    label: 'Excel export(xlsx)',
+                    action: () => {
+                      grid.export('xlsx', { columnNames: ['name', 'artist'] });
+                    },
+                  },
+                  {
+                    name: 'excelExport',
+                    label: 'Excel export(xls)',
+                    action: () => {
+                      grid.export('xls', { columnNames: ['name', 'artist'] });
+                    },
+                  },
+                ],
+              },
+              {
+                name: 'onlySelected',
+                label: 'onlySelected: true',
+                subMenu: [
+                  {
+                    name: 'csvExport',
+                    label: 'CSV export',
+                    action: () => {
+                      grid.export('csv', { onlySelected: true });
+                    },
+                  },
+                  {
+                    name: 'excelExport',
+                    label: 'Excel export(xlsx)',
+                    action: () => {
+                      grid.export('xlsx', { onlySelected: true });
+                    },
+                  },
+                  {
+                    name: 'excelExport',
+                    label: 'Excel export(xls)',
+                    action: () => {
+                      grid.export('xls', { onlySelected: true });
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      ],  //end of contextMenu
     });
 
     //그리드 이벤트
@@ -256,11 +377,22 @@
     grid.resetData(gridData);
 
     //테마 적용
-    Grid.applyTheme('striped'); // Call API of static method
+    //Grid.applyTheme('striped'); // Call API of static method
 
     //disable
-    grid.disableCell(0, "genreCode");
-    grid.disableRow(1);
+    //grid.disableCell(0, "genreCode");
+    //grid.disableRow(1);
+
+    window.setTimeout(function(){
+
+      grid.getData().forEach(row => {
+        //console.log(row)
+        console.log(row.rowKey, row.grade)
+        if( row.grade == '2'){
+          grid.addRowClassName(row.rowKey, "brown");   
+        }
+      })
+    },200)
   </script>
 </body>
 </html>

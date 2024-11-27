@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+/** @type {number} 주문금액 */
+let total ;
+
+//할인율을 적용한 주문금액 계산
+total = order(100,10);
+
+// #region 상품그리드
+/**
+ * 상품수량과 단가를 곱하고 할인율을 적용한 금액계산
+ * @param {number} productPrice 상품가격
+ * @param {number} productCount 상품수량
+ * @returns {number} productPrice와 productCount를 더한 결과
+ */
+ function order(productPrice, productCount) {
+  const rate = 0.9;
+  return productPrice * productCount * rate;
+}
+
+/**
+ * 
+ */
+ function sum(productPrice, productCount) {
+  const rate = 0.9;
+  return productPrice * productCount * rate;
+}
+
+//#endregion 상품그리드
+
+// #region 이벤트
+
+// 등록 이벤트
+const btnAdd = document.querySelector(".btnAdd")
+btnAdd.addEventListener("click", function(){
+
+});
+
+// 수정 이벤트
+const btnUpd = document.querySelector(".btnUpd")
+btnUpd.addEventListener("click", function(){
+  
+});
+//#endregion 이벤트
+  </script>
+</body>
+</html>

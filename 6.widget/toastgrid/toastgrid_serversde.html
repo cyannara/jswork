@@ -68,27 +68,11 @@
         perPage: 2
       },
       columns: [
-        {
-          header: '번호',
-          name: 'bno',
-          editor: 'text'
-        },
-        {
-          header: '제목',
-          name: 'title',
-          editor: 'text'
-        },
-        {
-          header: "작성자",
-          name: "writer",
-          editor: 'text'
-        },
-
+        { header: '번호', name: 'bno', editor: 'text' },
+        { header: '제목',  name: 'title', editor: 'text'},
+        { header: "작성자", name: "writer",editor: 'text'},
       ],  //end of column
     });
-
-    //그리드 이벤트
-
 
     // 버튼 이벤트 핸들러
     btnAdd.addEventListener("click", function () {
@@ -104,6 +88,7 @@
 
     //저장
     btnSave.addEventListener("click", function () {
+      grid.blur();
       grid.request('modifyData');
     })
 

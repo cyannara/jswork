@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+  <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+
+    <div id="editor"></div>
+    <script>
+
+      let abc = `<h2>testaabbbbb</h2>`;
+      
+      const Editor = toastui.Editor;
+      const editor = new Editor({
+        el: document.querySelector('#editor'),
+        initialEditType: 'wysiwyg',
+        initialValue : abc
+      });
+
+
+    </script>
+
+</body>
+</html>

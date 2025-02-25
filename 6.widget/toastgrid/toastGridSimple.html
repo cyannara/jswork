@@ -54,6 +54,7 @@
         columns: [ 
           { header : "Name", name:"name", editor: 'text'},
           { header : "Artist", name:"artist",  editor: 'text'},
+          { header : "price", name:"price",  editor: 'text', formatter:(v)=> new Intl.NumberFormat("ko-KR", { maximumSignificantDigits: 3 }).format(v.value)},
         ],
         data: gridData
       });

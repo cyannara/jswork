@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+<!-- 스타일 -->
+<style>
+  .modal {
+    border : 1px solid yellowgreen;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 80%;
+    height: 400;
+    background-color: rgba(0,0,0,0.5);
+  }
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 800px;
+  }
+  .close {
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <!-- 버튼 클릭 시 모달 열기 -->
+<button onclick="openModal()">PDF 보기</button>
+
+
+<!-- PDF 모달 -->
+<div id="pdfModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <canvas id="pdfCanvas"></canvas>
+  </div>
+</div>
+
+<!-- 스크립트 -->
+<script>
+  function openModal() {
+    document.getElementById("pdfModal").style.display = "flex";
+
+    var url = "http://localhost:82/sample.pdf";  // PDF 파일 경로
+    var canvas = document.getElementById("pdfCanvas");
+    var ctx = canvas.getContext("2d");
+
+    pdfjsLib.getDocument(url).promise.then(pdf => {
+      pdf.getPage(1).then(page => {
+        var viewport = page.getViewport({ scale: 0.9 });
+
+        canvas.width = 500;//viewport.width;
+        canvas.height = viewport.height;
+
+        var renderContext = { canvasContext: ctx, viewport: viewport };
+        page.render(renderContext);
+      });
+    });
+  }
+
+  function closeModal() {
+    document.getElementById("pdfModal").style.display = "none";
+  }
+</script>
+
+</body>
+</html>

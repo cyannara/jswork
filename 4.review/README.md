@@ -1,3 +1,36 @@
+
+
+
+
+1. value, innerHTML, document.querySelector(), Number() 를 이용하여 문제 풀기
+
+- calc.html
+  ```html
+    <h1>계산기</h1>
+    <input type="text" id="num1">
+    <input type="text" id="num2">
+    <button type="button" id="btnCalc" onclick="calc()">계산</button>
+    <div id="result" style="border:1px solid blue; height:50px"></div>
+    <script>
+      //두 입력값의 합을 계산해서 div.result 에 출력
+      function calc(){
+          // to do
+      }
+    </script>
+  ```
+  ```html
+    <script>
+      //두 입력값의 합을 계산해서 div.result 에 출력
+      function calc(){
+        let n1 = document.querySelector("#num1").value;  //string
+        let n2 = document.querySelector("#num2").value;
+        
+        let total = Number(n1) + Number(n2)              //parseInt <= "20px"
+        document.querySelector("#result").innerHTML = total;
+      }
+    </script>
+  ```
+
 - append.html
   ```html
       <input id="fruit">
@@ -22,30 +55,7 @@
         })
     </script>
   ```
-  
-- calc.html
-  ```html
-    <h1>계산기</h1>
-    <input type="text" id="num1">
-    <input type="text" id="num2">
-    <button type="button" id="btnCalc">계산</button>
-    <div id="result" style="border:1px solid blue; height:50px"></div>
-    <script>
-      //계산 버튼 클릭 이벤트
-      btnCalc.addEventListener("click", calc);
-      btnCalc.addEventListener("click", ()=>alert('end') );
 
-      //두 입력값의 합을 계산해서 div.result 에 출력
-      function calc(){
-        let n1 = document.querySelector("#num1").value;  //string
-        let n2 = document.querySelector("#num2").value;
-        
-        let total = Number(n1) + Number(n2)  //parseInt <= "20px"
-        div = document.querySelector("#result");
-        div.innerHTML = total;
-      }
-    </script>
-  ```
 - classTest.html
   ```html
       <div class="active">사과</div>

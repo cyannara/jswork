@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>order.html</title>
+  <style>
+    table {width:300px;border-collapse: collapse;}
+    table  td:nth-child(1) {
+      width :10%;
+      text-align: center;
+    }
+    table  td:nth-child(2) {
+      width :60%;
+    }
+    table  td:nth-child(3) {
+      width :30%;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <h3>주문상세내역</h3>
+  <table border="1" >
+    <thead>
+      <th></th>
+      <th>상품명</th>
+      <th>가격</th>
+    </thead>
+    <tr>
+      <td><input type="checkbox"></td>
+      <td>키보드</td>
+      <td>2,000</td>
+    </tr>
+    <tr>
+      <td><input type="checkbox"></td>
+      <td>마우스</td>
+      <td>3,000</td>
+    </tr>
+    <tr>
+      <td><input type="checkbox"></td>
+      <td>모니터</td>
+      <td>10,000</td>
+    </tr>
+  </table>
+  <button id="allDelete" type="button">전체삭제</button>
+  <button id="checkedDelete" type="button">선택삭제</button>
+  <script>
+    //전체삭제 버튼 이벤트 지정
+    document.querySelector("#allDelete").addEventListener("click", (e)=>{
+      //모든 체크박스를 선택하여 반복문
+      document.querySelectorAll("[type=checkbox]").forEach((ele, idx)=>{
+        //체크박스의 조상(tr)을 찾아서 remove하거나 부모의부모를 삭제
+        //ele.parentElement.parentElement.remove();
+        ele.closest("tr").remove();
+      })
+    })
+
+    //선택삭제 버튼 이벤트 지정
+    document.querySelector("#checkedDelete").addEventListener("click", (e)=>{
+      //체크된 태그를 선택하여 반복문 
+      document.querySelectorAll(":checked").forEach((ele, idx)=>{
+        //체크박스의 조상(tr)을 찾아서 remove하거나 부모의부모를 삭제
+        //ele.parentElement.parentElement.remove();
+        ele.closest("tr").remove();
+      })
+    })
+
+  </script>
+</body>
+</html>

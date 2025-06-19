@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+  <style>
+    li input {
+      width: 90%;
+    }
+
+    li span {
+      display: inline-block;
+    }
+
+    li span:first-child {
+      width: 60%;
+    }
+
+    li span:last-child {
+      width: 20%;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <!-- <li data-id=""><span>title</span><span>
+        <button class="btnUpdForm">수정</button><button class="btnDel">삭제</button></span>
+    </li> -->
+    <!-- <li class='updForm'><span><input name="title" value="title"></span>
+      <span><button class="btnUpd">수정</button><button class="btnCancel">취소</button></span>
+    </li> -->
+  </ul>
+  <script>
+    let url = 'https://jsonplaceholder.typicode.com/posts';
+    getPostList();
+
+    //전체조회
+    function getPostList() {
+      $.ajax(url)
+        .then((datas) => {
+          datas.forEach(element => {
+            let btn = `<button class="btnUpdForm">수정</button><button class="btnDel">삭제</button>`;
+            $('ul').append(`<li data-id="${element.id}"><span>${element.title}</span><span> ${btn}</span></li>`)
+          });
+        });
+    }
+
+    //읽기폼
+    function getPost(id) {
+      $.ajax(url + '/' + id)
+        .then((data) => {
+          let btn = `<button class="btnUpdForm">수정</button><button class="btnDel">삭제</button>`;
+          $(`[data-id=${id}]`).replaceWith(`<li data-id="${data.id}"><span>${data.title}</span><span> ${btn}</span></li>`)
+        });
+    }
+
+    //수정폼
+    function replaceUpdForm(id) {
+      $.ajax(url + '/' + id)
+        .then((data) => {
+          let form = `<li data-id="${data.id}" class='updForm'><span><input name="title" value="${data.title}"></span>
+            <span><button class="btnUpd">수정</button><button class="btnCancel">취소</button></span></li>`;
+          $(`[data-id=${id}]`).replaceWith(form)
+        });
+    }
+
+    // 삭제버튼
+    $('ul').on('click', '.btnDel', () => {
+      let li = $(event.target).closest("li");
+      let id = li.data("id");
+      $.ajax(url + '/' + id, { method: "delete" })
+        .then((datas) => {
+          li.remove()
+        });
+    })
+
+    //수정폼
+    $('ul').on('click', '.btnUpdForm', () => {
+      if ($('.updForm')) {
+        let id = $('.updForm').data('id');
+        getPost(id);
+      }
+      let li = $(event.target).closest("li");
+      let id = li.data("id");
+      replaceUpdForm(id);
+    })
+
+    //수정
+    $('ul').on('click', '.btnUpd', () => {
+      let li = $(event.target).closest("li");
+      let id = li.data("id");
+      let title = li.find('[name="title"]').val();
+      let param = { id, title }
+      $.ajax(url + '/' + id, { method: "put", contentType: 'application/json', data: JSON.stringify(param) })
+        .then((data) => {
+          $(`[data-id=${id}]`).replaceWith(makePost(data));
+        })
+
+      //취소
+      $('ul').on('click', '.btnCancel', () => {
+        let li = $(event.target).closest("li");
+        let id = li.data("id");
+        getPost(id);
+      })
+
+      function makeUpdForm(data) {
+
+      }
+
+      function makePost(data) {
+        let btn = `<button class="btnUpdForm">수정</button><button class="btnDel">삭제</button>`;
+        let tag = `<li data-id="${data.id}"><span>${data.title}</span><span> ${btn}</span></li>`;
+        return tag;
+      }
+  </script>
+</body>
+
+</html>

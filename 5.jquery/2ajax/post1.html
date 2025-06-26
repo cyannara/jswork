@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <style>
+    li {
+
+      margin-bottom: 15px;
+    }
+    li span {
+      display: inline-block;
+    }
+
+    li span:first-child {
+      width: 5%;
+    }
+    li span:nth-child(2) {
+      width: 50%;
+    }
+
+    li span:last-child {
+      width: 20%;
+    }
+
+    li input {
+      width: 90%;
+    }
+  </style>
+</head>
+
+<body>
+  <ul> </ul>
+
+  <script>
+    /* 로직
+    1. 로딩후 전체조회
+        본인글인경우 수정 삭제버튼 추가
+        내용만 조회 
+    2. 수정 기능
+       2-1 수정폼으로 변환
+       2-2 저장
+       2-3 취소 
+    3. 삭제 기능
+    4. 새 글 저장 기능
+    */
+
+    getData();    //로딩후 전체조회
+
+    replaceUpdForm();  // 수정버튼 이벤트 지정
+    postDeleteEvent(); //삭제 버튼 이벤트 지정
+    
+    //postUpdateEvent();   // 수정후 저장버튼 이벤트 지정
+    //postCancelEvnet();   // 수정 후 취소 버튼 이벤트 지정
+    //postSaveEvent();     // 새글 저장 버튼 이벤트 지정
+
+    //수정 폼 생성
+    function makeForm(data) {
+      let tag = `<li data-id="${data.id}" class="updForm">
+                  <span>${data.id }</span>
+                  <span><input value="${data.title }"></span>
+                  <span><button class="btnSave">저장</button>
+                    <button class="btnCalcel">취소</button></span></li>`;
+      return tag;
+    }
+
+    //조회 폼 생성
+    function makePost(data) {
+      let tag = `<li data-id="${data.id}">
+        <span>${data.id }</span>
+        <span>${data.title }</span>
+        <span><button class="btnUpd">수정</button>
+              <button class="btnDel">삭제</button></span></li> `
+      return tag;
+    }
+
+    //조회폼을 수정폼으로 변경 이벤트 지정
+    function replaceUpdForm(){
+      $('ul').on('click', '.btnUpd', ()=>{
+        //기존의 수정폼이 있으면 조회폼으로 변경
+        if( $(".updForm").length>0 ) {
+          let id = $(".updForm").data("id");
+          let title = $(".updForm").find("input").val();
+          $(`[data-id=${id}]`).replaceWith(makePost({id,title}))
+        }
+        //id 속성
+        let id = $(event.target).closest("li").data("id");
+        let title = $(event.target).closest("li").find("span").eq(1).html();
+        //수정폼으로 변경
+        $(`[data-id=${id}]`).replaceWith(makeForm({id,title}))
+      })
+    }
+
+    // 전체 조회
+    function getData() {
+      $.ajax('https://jsonplaceholder.typicode.com/posts')
+        .done(result => {
+          result.forEach(data => {
+            $('ul').append(makePost(data));
+          }); //end of for
+        }); // end of done
+    }
+
+    //삭제 버튼 이벤트 지정
+    function postDeleteEvent(){
+    $('ul').on('click', '.btnDel', function () {
+      let li = $(event.target).closest('li');
+      let id = li.data('id');
+      $.ajax(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+          method: 'DELETE'
+        })
+        .done(result => {
+          li.remove();
+        })
+        .fail(err => console.log(err))
+    })
+        
+    }
+  </script>
+</body>
+
+</html>

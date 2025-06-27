@@ -12,14 +12,18 @@
       이름, 나이, 취미, 주소
     */
     //내 정보를 변수에 저장
-    let name = '홍길동'   // 이름    기본형 : 문자열
-    let age = 20;        // 나이    기본형 : 숫자
-    let hobby = ['게임','독서']              // 취미  복합유형: 배열
-    let addr = {home:'대구',office:'서울'}   // 주소  복합유형 : 객체
+    let name = '홍길동'                        // 이름: 문자열
+    let age = 20;                              // 나이: 숫자
+    let birth = new Date(1995,11,17,3,20);     // 생일: 날짜
+    let isMarried = false;                     // 결혼여부: 불리언 
+    let hobby = ['게임', '독서']               // 취미: 배열
+    let addr = {home: '대구', office: '서울'}  // 주소: 객체
     
     //내 정보를 콘솔에 출력
     console.log(name);
     console.log(age);
+    console.log(birth.toUTCString());
+    console.log(isMarried);
     console.log(hobby[0], hobby[1]);
     console.log(addr.home, addr.office);
   </script>

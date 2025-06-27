@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>두 수의 합 구하기</title>
+</head>
+<body>
+  <h1>두 수의 합을 구합니다</h1>
+  <input type="number" id="num1" placeholder="첫 번째 숫자">
+  +
+  <input type="number" id="num2" placeholder="두 번째 숫자">
+  =
+  <input type="number" id="userResult" placeholder="결과 입력">
+  <button onclick="checkSum()">확인</button>
+  <p id="result"></p>
+
+  <button onclick="resetNumbers()">다시 시도</button>
+  <script>
+    // 두 수를 랜덤으로 초기화
+    function setRandomNumbers() {
+      const n1 = Math.floor(Math.random() * 100);
+      const n2 = Math.floor(Math.random() * 100);
+      document.getElementById('num1').value = n1;
+      document.getElementById('num2').value = n2;
+      document.getElementById('userResult').value = '';
+      document.getElementById('result').textContent = '';
+    }
+
+    function checkSum() {
+      const n1 = Number(document.getElementById('num1').value);
+      const n2 = Number(document.getElementById('num2').value);
+      const userResult = Number(document.getElementById('userResult').value);
+      const correct = n1 + n2;
+      if (userResult === correct) {
+        document.getElementById('result').textContent = '정답입니다!';
+      } else {
+        document.getElementById('result').textContent = '틀렸습니다. 정답은 ' + correct + '입니다.';
+      }
+    }
+
+    function resetNumbers() {
+      setRandomNumbers();
+    }
+
+    // 페이지 로드 시 랜덤 숫자 설정
+    window.onload = setRandomNumbers;
+  </script>
+  <p>이 페이지는 두 수의 합을 구하는 간단한 웹 애플리케이션입니다.</p>
+  <p>사용자가 입력한 두 숫자의 합을 계산하고, 사용자가 입력한 결과와 비교하여 정답 여부를 알려줍니다.</p>
+  <p>이 코드는 HTML, CSS, JavaScript를 사용하여 작성되었습니다.</p>
+  <p>이 페이지는 교육용으로 만들어졌으며, 실제 웹 애플리케이션에서는 보안 및 유효성 검사 등을 추가로 고려해야 합니다.</p>
+  <p>이 코드를 실행하려면 웹 브라우저에서 HTML 파일을 열
+어보세요.</p>
+
+</body>
+</html>

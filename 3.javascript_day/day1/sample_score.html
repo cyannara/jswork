@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      width: 300px;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <button onclick="location.reload()">합격자수</button>
+  <h1>학생 성적표</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>이름</th>
+        <th>국어</th>
+        <th>영어</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>홍길동</td>
+        <td>80</td>
+        <td>70</td>
+      </tr>
+      <tr>
+        <td>김영희</td>
+        <td>70</td>
+        <td>40</td>
+      </tr>
+      <tr>
+        <td>이철수</td>
+        <td>90</td>
+        <td>90</td>
+      </tr>
+  </table>
+</body>
+</html>

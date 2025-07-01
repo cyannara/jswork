@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://uicdn.toast.com/tui-tree/latest/tui-tree.js"></script>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://uicdn.toast.com/tui-tree/latest/tui-tree.css"
+/>
+</head>
+<body>
+  <div id="tree" class="tui-tree-wrap"></div>
+  <script>
+const data = [
+  { id: 1, text: "Root", parentId: null, state: 'opened'},
+  { id: 2, text: "Child 1", parentId: 1 , state: 'opened'},
+  { id: 3, text: "Child 2", parentId: 1 },
+  { id: 4, text: "Subchild 1", parentId: 2 },
+  { id: 5, text: "Subchild 2", parentId: 2 }
+];
+
+
+function buildTree(flatArray) {
+  const map = new Map();
+  const tree = [];
+
+  // 1. 모든 항목을 맵에 저장
+  flatArray.forEach(item => {
+    map.set(item.id, { ...item, children: [] });
+  });
+
+  // 2. 부모-자식 관계를 설정
+  flatArray.forEach(item => {
+    if (item.parentId === null) {
+      tree.push(map.get(item.id));  // 루트 노드
+    } else {
+      const parent = map.get(item.parentId);
+      if (parent) {
+        parent.children.push(map.get(item.id));  // 부모의 children에 추가
+      }
+    }
+  });
+
+  return tree;
+}
+
+// 변환 실행
+const treeData = buildTree(data);
+
+
+const Tree = tui.Tree;
+const container = document.getElementById('tree');
+const options = {
+  data: treeData,
+  nodeIdPrefix: 'tui-tree-node-',
+ // nodeDefaultState: 'opened', //'closed',
+  stateLabels: {
+    opened: '-',
+    closed: '+'
+  },};
+const instance = new Tree(container, options);
+  </script>
+</body>
+</html>

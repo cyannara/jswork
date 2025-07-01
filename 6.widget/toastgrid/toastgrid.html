@@ -31,6 +31,12 @@
     }
   </style>
   <title>Document</title>
+  <style>
+    .require {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
 </head>
 
 <body>
@@ -44,7 +50,13 @@
   <div id="pagination" class="tui-pagination"></div>
   <script src="basic-dummy.js"></script>
   <script>
-    //const gridData = []  //basic-dummy.js에 선언되어 있음
+    function getHeader(name){
+      const header= document.createElement("span");
+      header.innerHTML = `<span class="require">*</span>${name}`;
+      return header
+    }
+    
+     //const gridData = []  //bas ic-dummy.js에 선언되어 있음
 
     // 버튼 이벤트 핸들러
     // 행추가
@@ -156,14 +168,16 @@
         useClient: true,
         perPage: 5
       },
+
       columns: [
         {
-          header: 'Name',
+         header: 'Name',
           name: 'name',
           editor: 'text'
         },
         {
-          header: 'Artist',
+          //customHeader: header,
+          customHeader: getHeader('artist'),
           name: 'artist',
           // renderer: {
           //   type: CustomTextRenderer
@@ -176,7 +190,7 @@
           // }
         },
         {
-          header: "time",
+           customHeader: getHeader('time'),
           name: "time",
           //editor : "time",
           editor: { type: CustomTimeEditor },

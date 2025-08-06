@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>이미지 미리보기 클릭 업로드</title>
+  <style>
+    .preview {
+      width: 150px;
+      height: 150px;
+      border: 2px dashed #aaa;
+      margin-top: 10px;
+      object-fit: cover;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .preview::before {
+      content: "클릭하여 업로드";
+      display: block;
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      line-height: 150px;
+    }
+    .preview.has-image::before {
+      content: "";
+    }
+    input[type="file"] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h3>썸네일 이미지</h3>
+  <input type="file" accept="image/*" id="thumbInput">
+  <img id="thumbPreview" class="preview" src="" alt="썸네일 미리보기">
+
+  <h3>메인 이미지</h3>
+  <input type="file" accept="image/*" id="mainInput">
+  <img id="mainPreview" class="preview" src="" alt="메인 미리보기">
+
+  <script>
+    function setupClickablePreview(inputId, previewId) {
+      const input = document.getElementById(inputId);
+      const preview = document.getElementById(previewId);
+
+      // 이미지 박스 클릭하면 input 클릭 이벤트 발생
+      preview.addEventListener('click', () => input.click());
+
+      // 파일 선택되면 미리보기 표시
+      input.addEventListener('change', function () {
+        const file = input.files[0];
+        if (file && file.type.startsWith('image/')) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            preview.src = e.target.result;
+            preview.classList.add('has-image');
+          };
+          reader.readAsDataURL(file);
+        } else {
+          preview.src = '';
+          preview.classList.remove('has-image');
+        }
+      });
+    }
+
+    setupClickablePreview('thumbInput', 'thumbPreview');
+    setupClickablePreview('mainInput', 'mainPreview');
+  </script>
+
+</body>
+</html>

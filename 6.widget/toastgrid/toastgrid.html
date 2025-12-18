@@ -25,17 +25,25 @@
   <!-- 엑셀 -->
   <script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
 
+
+  <title>Document</title>
   <style>
     .red {
       background-color: brown;
     }
-  </style>
-  <title>Document</title>
-  <style>
     .require {
       color: red;
       font-weight: bold;
     }
+
+  .tui-grid-cell-current-row > td {
+    background-color: #e3f2fd !important; /* 원하는 색 */
+  }
+
+  .col-amount {
+    font-weight: bold;
+    color:blue !important
+  }
   </style>
 </head>
 
@@ -173,7 +181,8 @@
         {
          header: 'Name',
           name: 'name',
-          editor: 'text'
+          editor: 'text',
+          className: 'col-amount'
         },
         {
           //customHeader: header,
@@ -413,6 +422,12 @@
         }
       })
     }, 200)
+
+    var Grid = tui.Grid; // or require('tui-grid')
+
+Grid.applyTheme('striped', {
+  row: {hover:{background: 'yellow'}},
+});
   </script>
 </body>
 

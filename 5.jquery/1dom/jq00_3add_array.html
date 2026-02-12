@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h3 id="title">DOM</h3>
+<form name="searchfrm" id="searchfrm" >
+	언어<select id="lang" name="lang">
+		<!-- <option value="자바">자바</option> -->
+	</select><br>
+	취미<select id="hobby" name="hobby">
+		<!-- <option value="game">게임</option> -->
+	</select>	
+</form>
+<script>
+
+let langarr = ["선택","자바","스프링","자바스크립트"];
+
+let lang = document.getElementById("lang");
+for(i=0;i<langarr.length;i++) { 
+	let op = document.createElement("option");
+	op.text = langarr[i];
+	op.value = langarr[i];
+	lang.append(op);
+}	
+
+let hobbyarr = [{value:"", text:"선택"},
+								{value:"read", text:"독서"},
+								{value:"game", text:"게임"},
+								{value:"music", text:"음악"}];
+let hobby = document.getElementById("hobby");
+for(i=0;i<hobbyarr.length;i++) { 
+	let op = document.createElement("option");
+	op.text = hobbyarr[i].text;
+	op.value = hobbyarr[i].value;
+	hobby.append(op);
+}								
+</script>
+</body>
+</html>

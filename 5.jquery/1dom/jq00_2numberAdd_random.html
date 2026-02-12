@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>계산기</h1>
+  <input type="text" id="num1"> + 
+  <input type="text" id="num2">
+  <button type="button">계산</button>
+  <div id="result" style="border:1px solid blue; height:30px; padding:5px; margin-top: 5px;">     </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script>
+  //$(window).ready(function(){  
+  $(function(){
+    //두 수의 합을 div에 출력
+    $("button").on("click", function(){      
+      let n1 = $("#num1").val();   //.value
+      let n2 = $("#num2").val();
+      let total =  Number(n1) + Number(n2)
+      $("#result").html(total);    //.innerHTML
+    })    
+  })
+  </script>
+</body>
+</html>

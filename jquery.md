@@ -99,8 +99,51 @@ CDN
 </body>    
 ```
 
-## [요소 선택](https://learn.jquery.com/using-jquery-core/selecting-elements/)
+4. 이벤트  
+```html
+  <style>
+    .active { background-color: beige; }
+  </style>
+</head>
+<body>
+   <table>
+    <tr data-name="a1" data-no="101">
+      <td>1</td>
+      <td>11</td>
+      <td>12</td>
+      <td><button>확인</button></td>
+    </tr>
+    <tr data-name="a2" data-no="102">
+      <td>2</td>
+      <td>21</td>
+      <td>22</td>
+      <td><button>확인</button></td>
+    </tr>
+    <tr data-name="a3" data-no="103" class="active">
+      <td>3</td>
+      <td>31</td>
+      <td>32</td>
+      <td><button>확인</button></td>
+    </tr>
+  </table>
+  <button id="btnAdd">추가</button>
+  <button id="btnSave">저장</button>
+  <script>
+    //확인버튼: 클릭한 버튼의 첫번째 TD의 내용 출력(그룹(위임)이벤트)
 
+
+    //저장버튼: active인 tr태그의 첫번째 td값 모두 출력
+
+
+    //추가버튼: tr 태그 생성해서 추가
+
+  </script> 
+</body> 
+```
+
+
+## [요소 선택](https://learn.jquery.com/using-jquery-core/selecting-elements/)
+- [css selector test](https://www.w3schools.com/cssref/trysel.php)
 
 ## dom 객체와 [jQuery 객체](https://learn.jquery.com/using-jquery-core/jquery-object/) 변환
 
